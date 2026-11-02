@@ -185,8 +185,8 @@ SIP 통화를 걸 수 있는 장치들을 준비한다. (PC의 경우에는 Micr
 
 등록하고 난 이후에 asterisk CLI에서 조회해보면 다음과 같이 설정했던 기기 이름(5001번과 5002번)으로 연결된 것을 볼 수 있다.
 
-![Asterisk CLI 등록 상태](/assets/images/asterisk-cli-registration.png)
+<p class="post-image post-image--compact"><img src="/assets/images/asterisk-cli-registration.png" alt="Asterisk CLI 등록 상태"></p>
 
 이제 5001번에서 5002번으로 실제 통화를 시도하면 asterisk 내에서 다음과 같은 로그를 볼 수 있다. 반대의 경우도 마찬가지이다.
 
-![Asterisk 통화 로그](/assets/images/asterisk-call-log.png)
+<p class="post-image post-image--compact"><img src="/assets/images/asterisk-call-log.png" alt="Asterisk 통화 로그"></p>
