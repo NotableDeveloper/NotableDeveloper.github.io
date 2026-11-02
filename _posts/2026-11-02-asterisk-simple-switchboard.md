@@ -8,7 +8,7 @@ tags: [asterisk, pjsip, sip, voip]
 
 아래와 같이 5001번과 5002번의 두 대의 전화기가 존재하는 상황이라 가정하고, Asterisk를 통해 두 대의 전화기에 대한 **교환기**를 구현해보자. 즉, Asterisk를 이용하여 5001번과 5002번이 서로 통화가 가능하도록 전화 신호를 교환해보는 것이다.
 
-![image.png](image.png)
+![Asterisk 교환기 구성도](/assets/images/asterisk-switchboard-overview.png)
 
 ## PJSIP 설정하기
 
@@ -181,12 +181,12 @@ SIP 통화를 걸 수 있는 장치들을 준비한다. (PC의 경우에는 Micr
 
 다음과 같이 SIP 서버(= 교환기 서버, asterisk가 가동중인 서버) 및 PJSIP에서 등록한 계정 정보들을 작성하고 등록해준다.
 
-![image.png](image.png)
+![MicroSIP 계정 등록 설정](/assets/images/asterisk-microsip-setup.png)
 
 등록하고 난 이후에 asterisk CLI에서 조회해보면 다음과 같이 설정했던 기기 이름(5001번과 5002번)으로 연결된 것을 볼 수 있다.
 
-![image.png](image.png)
+![Asterisk CLI 등록 상태](/assets/images/asterisk-cli-registration.png)
 
 이제 5001번에서 5002번으로 실제 통화를 시도하면 asterisk 내에서 다음과 같은 로그를 볼 수 있다. 반대의 경우도 마찬가지이다.
 
-![image.png](image.png)
+![Asterisk 통화 로그](/assets/images/asterisk-call-log.png)
