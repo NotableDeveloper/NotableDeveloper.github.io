@@ -1,7 +1,7 @@
 ---
 title: "간단한 교환기 구현하기"
 description: "Asterisk와 PJSIP를 이용해 5001번과 5002번 전화기가 통화할 수 있는 간단한 교환기를 구현합니다."
-date: 2026-11-02 23:00:00 +0900
+date: 2026-11-02 22:30:00 +0900
 categories: [Asterisk, Practice]
 tags: [asterisk, pjsip, sip, voip]
 ---
