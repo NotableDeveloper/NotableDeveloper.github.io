@@ -1,0 +1,39 @@
+title: "Engineering Notes"
+description: "실무에서 배운 기술과 문제 해결 과정을 기록하는 블로그"
+url: "https://notabledeveloper.github.io"
+baseurl: ""
+lang: ko-KR
+timezone: Asia/Seoul
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+paginate: 8
+paginate_path: "/page:num/"
+
+author:
+  name: "Your Name"
+  bio: "Software engineer · systems · problem solving"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: "Your Name"
+      comments: false
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.svg
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
