@@ -8,7 +8,15 @@ tags: [asterisk, pjsip, sip, voip]
 
 아래와 같이 5001번과 5002번의 두 대의 전화기가 존재하는 상황이라 가정하고, Asterisk를 통해 두 대의 전화기에 대한 **교환기**를 구현해보자. 즉, Asterisk를 이용하여 5001번과 5002번이 서로 통화가 가능하도록 전화 신호를 교환해보는 것이다.
 
-![Asterisk 교환기 구성도](/assets/images/asterisk-switchboard-overview.png)
+다음과 같은 구조로 Asterisk가 두 전화기 사이의 교환기 역할을 한다.
+
+```text
+                    Asterisk 교환기
+                    /            \
+                   /              \
+          5001번 전화기      5002번 전화기
+             SIP/RTP             SIP/RTP
+```
 
 ## PJSIP 설정하기
 
@@ -181,12 +189,43 @@ SIP 통화를 걸 수 있는 장치들을 준비한다. (PC의 경우에는 Micr
 
 다음과 같이 SIP 서버(= 교환기 서버, asterisk가 가동중인 서버) 및 PJSIP에서 등록한 계정 정보들을 작성하고 등록해준다.
 
-![MicroSIP 계정 등록 설정](/assets/images/asterisk-microsip-setup.png)
+MicroSIP에는 다음과 같이 5001 계정을 등록한다. `SIP 서버`와 `도메인`은 Asterisk 서버 주소로 설정한다.
+
+| 항목 | 값 |
+| --- | --- |
+| 계정 이름 | `5001` |
+| 사용자 | `5001` |
+| 로그인 | `5001` |
+| 비밀번호 | `5001` |
+| 표시 이름 | `5001` |
+| SIP 서버 | Asterisk 서버 주소 |
+| 도메인 | Asterisk 서버 주소 |
 
 등록하고 난 이후에 asterisk CLI에서 조회해보면 다음과 같이 설정했던 기기 이름(5001번과 5002번)으로 연결된 것을 볼 수 있다.
 
-<p class="post-image post-image--compact"><img src="/assets/images/asterisk-cli-registration.png" alt="Asterisk CLI 등록 상태"></p>
+등록이 완료되면 `pjsip show contacts` 명령으로 두 전화기의 연락처가 등록된 것을 확인할 수 있다.
+
+```text
+localhost*CLI> pjsip show contacts
+
+Contact:  5001/sip:5001@<ASTERISK_SERVER>  ...  <STATUS>  <RTT(ms)>
+Contact:  5002/sip:5002@<ASTERISK_SERVER>  ...  <STATUS>  <RTT(ms)>
+```
+
+여기서 `5001`과 `5002`가 각각 표시되면 두 단말이 Asterisk에 등록된 상태다.
 
 이제 5001번에서 5002번으로 실제 통화를 시도하면 asterisk 내에서 다음과 같은 로그를 볼 수 있다. 반대의 경우도 마찬가지이다.
 
-<p class="post-image post-image--compact"><img src="/assets/images/asterisk-call-log.png" alt="Asterisk 통화 로그"></p>
+통화가 연결되면 Asterisk CLI에는 다음과 같은 흐름이 출력된다.
+
+```text
+-- Executing [5002@simple:1] Dial("PJSIP/5001-...", "PJSIP/5002") in new stack
+-- Called PJSIP/5002
+-- PJSIP/5002-... is ringing
+-- PJSIP/5002-... answered PJSIP/5001-...
+-- Channel PJSIP/5001-... joined 'simple_bridge'
+-- Channel PJSIP/5002-... joined 'simple_bridge'
+-- Remotely bridged PJSIP/5001-... and PJSIP/5002-...
+```
+
+이 로그는 5001번에서 5002번으로 전화를 걸고, 두 채널이 하나의 브리지로 연결되어 음성 통화가 시작된 과정을 보여준다.

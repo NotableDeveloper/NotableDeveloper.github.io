@@ -44,9 +44,7 @@ h1, h2, h3 { margin: 0; line-height: 1.18; letter-spacing: -.05em; }
 .post-lede { margin: -20px 0 45px; color: var(--muted); font-size: 1.15rem; }
 .post-body h2 { font-size: 1.6rem; }
 .post-body p { margin: 0 0 22px; }
-.post-body img { display: block; max-width: 100%; height: auto; }
-.post-body .post-image--compact img { width: 60%; max-width: 440px; }
 .post-body code { padding: 2px 5px; background: var(--accent-soft); font-family: "DM Mono", monospace; font-size: .85em; }
 .post-body pre { overflow-x: auto; padding: 22px; color: #f4f5ed; background: #1c2825; font: .85rem/1.7 "DM Mono", monospace; }
 .post-body pre code { padding: 0; background: none; }
-@media (max-width: 700px) { .shell { width: min(calc(100% - 32px), var(--max)); } .nav-wrap { min-height: 64px; } .hero { padding: 90px 0 90px; } .post-grid { grid-template-columns: 1fr; } .post-card { min-height: 220px; } .page-content, .post-content { padding: 80px 0 100px; } .post-body .post-image--compact img { width: 100%; } }
+@media (max-width: 700px) { .shell { width: min(calc(100% - 32px), var(--max)); } .nav-wrap { min-height: 64px; } .hero { padding: 90px 0 90px; } .post-grid { grid-template-columns: 1fr; } .post-card { min-height: 220px; } .page-content, .post-content { padding: 80px 0 100px; } }
