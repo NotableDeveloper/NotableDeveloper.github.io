@@ -21,7 +21,37 @@
         </nav>
       </div>
     </header>
-    <main class="shell">{{ content }}</main>
+    <main class="site-layout shell">
+      <aside class="category-sidebar" aria-label="Post categories">
+        <p class="eyebrow">CATEGORIES</p>
+        <nav class="category-nav" aria-label="Post categories">
+          <ul>
+            {% for category in site.data.categories %}
+              <li>
+                <a href="{{ category.url | relative_url }}">{{ category.title }}</a>
+                {% if category.children %}
+                  <ul>
+                    {% for child in category.children %}
+                      <li>
+                        <a href="{{ child.url | relative_url }}">{{ child.title }}</a>
+                        {% if child.children %}
+                          <ul>
+                            {% for grandchild in child.children %}
+                              <li><a href="{{ grandchild.url | relative_url }}">{{ grandchild.title }}</a></li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </aside>
+      <div class="site-main">{{ content }}</div>
+    </main>
     <footer class="site-footer shell">
       <p>© {{ 'now' | date: '%Y' }} {{ site.author.name }}. Built with Jekyll.</p>
       <a href="{{ '/feed.xml' | relative_url }}">RSS</a>

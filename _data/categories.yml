@@ -1,0 +1,9 @@
+- title: Asterisk
+  url: /categories/asterisk/
+  children:
+    - title: Practice
+      url: /categories/asterisk/practice/
+    - title: SIP
+      url: /categories/asterisk/sip/
+- title: Docker
+  url: /categories/docker/

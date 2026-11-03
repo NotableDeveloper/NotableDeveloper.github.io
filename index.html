@@ -8,13 +8,10 @@ title: Home
   <h1 id="hero-title">Explaining complex problems simply.</h1>
 </section>
 
-<section class="posts-section" id="posts" aria-labelledby="posts-title">
-  <div class="section-heading">
-    <p class="eyebrow">LATEST POSTS</p>
-    <h2 id="posts-title">latest</h2>
-  </div>
+<section class="posts-section" id="posts" aria-label="게시글">
   <div class="post-grid">
-    {% for post in site.posts limit: site.paginate %}
+    {% assign sorted_posts = site.posts | sort: "date" | reverse %}
+    {% for post in sorted_posts limit: site.paginate %}
       <article class="post-card">
         <p class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time>{% if post.categories %} · {{ post.categories | join: " / " }}{% endif %}</p>
         <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
