@@ -15,25 +15,10 @@ Multi Programming System에서 메모리 내에 적재된 Application의 수가 
 Page Fault Handler는 Disk를 탐색하여 요구된 페이지의 위치를 찾는다. 이후 물리 메모리에서 할당되지 않은 프레임을 찾는다. 할당되지 않은 프레임이 있으면 그대로 사용하고, 찾지 못하면 Page Replacement Algorithm으로 교체될 프레임(Victim Frame)을 선택한다. 교체할 프레임의 내용을 Disk에 저장하고 Page Table에서 해당 프레임의 내용을 갱신한 뒤 Application을 재시작한다.
 
 ```text
-Page Fault
-   │
-요구된 페이지의 Disk 위치 탐색
-   │
-할당되지 않은 Frame 탐색
-   ├─ Frame 있음 ───────────────▶ 요구 페이지 적재
-   └─ Frame 없음 ─▶ Victim Frame 선택
-                       │
-                       ▼
-               기존 내용 Disk 저장
-                       │
-                       ▼
-                Page Table 갱신
-                       │
-                       ▼
-                요구 페이지 적재
-                       │
-                       ▼
-                Application 재시작
+Page Fault → 요구된 페이지의 Disk 위치 탐색 → 할당되지 않은 Frame 탐색
+Frame 있음 → 요구 페이지 적재 → Application 재시작
+Frame 없음 → Victim Frame 선택 → 기존 내용 Disk 저장 → Page Table 갱신
+           → 요구 페이지 적재 → Application 재시작
 ```
 
 Page Replacement를 고려할 때는 다음과 같은 문제가 있다.
@@ -65,9 +50,8 @@ FIFO 알고리즘을 보완하기 위해 Reference Bit를 추가한 알고리즘
 참조 비트는 프레임에 최초로 적재될 때와 페이지가 참조될 때마다 1로 설정한다. 참조 비트는 주기적으로 0으로 초기화한다. 페이지 교체 시 참조 비트가 1이면 최근에 사용된 페이지이므로 교체하지 않고 참조 비트만 0으로 바꾼 뒤 다른 페이지를 교체한다.
 
 ```text
-교체 대상의 Reference Bit 확인
-   ├─ 0 → 페이지 교체
-   └─ 1 → Bit를 0으로 바꾸고 다음 페이지 검사
+교체 대상의 Reference Bit 확인 → 0 → 페이지 교체
+교체 대상의 Reference Bit 확인 → 1 → Bit를 0으로 바꾸기 → 다음 페이지 검사
 ```
 
 ### 3. Clock Algorithm
@@ -77,15 +61,9 @@ SCR Algorithm을 발전시킨 형태로, 환형 Queue를 사용하여 프레임�
 `Hand`가 가리키는 페이지의 참조 비트가 1이면 최근에 사용된 페이지로 보고 교체하지 않는다. 참조 Bit만 0으로 초기화하고 다음 페이지로 이동한다. 이 알고리즘도 참조 Bit를 주기적으로 0으로 초기화한다.
 
 ```text
-                 ┌─────────┐
-             ┌──▶│ Page A  │──┐
-             │   └─────────┘  ▼
-         ┌─────────┐      ┌─────────┐
-         │ Page D  │      │ Page B  │ ← Hand
-         └────▲────┘      └────┬────┘
-              └─────┌─────────┐◀┘
-                    │ Page C  │
-                    └─────────┘
+Hand → Page A → Page B → Page C → Page D → Page A
+Page 참조 비트 1 → 비트를 0으로 변경 → 다음 Page로 이동
+Page 참조 비트 0 → 해당 Page 교체
 ```
 
 ### 4. Least Frequently Used Algorithm
@@ -117,13 +95,7 @@ SCR Algorithm을 발전시킨 형태로, 환형 Queue를 사용하여 프레임�
 - **Queue**: 한 번 사용한 페이지를 Queue의 가장 위로 이동시킨다. Queue의 가장 위는 가장 최근에 사용한 페이지이고, 가장 아래는 가장 오래 전에 사용된 페이지다.
 
 ```text
-가장 최근에 사용한 페이지
-          ▲
-       [ Page ]
-       [ Page ]
-       [ Page ]
-          ▼
-가장 오래 전에 사용한 페이지 → 교체 대상
+가장 최근에 사용한 페이지 → 다음으로 최근에 사용한 페이지 → 가장 오래 전에 사용한 페이지 → 교체 대상
 ```
 
 위의 참조열에서 LRU Algorithm의 Page Fault는 총 12번 발생한다.
@@ -133,12 +105,8 @@ SCR Algorithm을 발전시킨 형태로, 환형 Queue를 사용하여 프레임�
 Page Replacement만으로 메모리 부족을 해결하지 못할 때 사용하는 기법이다. 대상 프로세스 전체를 Disk로 이동시켜 두었다가 다시 필요할 때 불러온다. 이때 사용하는 Disk 영역을 Swap 영역이라고 한다.
 
 ```text
-물리 메모리 부족
-      │
-      ▼
-프로세스 전체 ──▶ Disk의 Swap 영역
-      │                 │
-      └──── 필요할 때 다시 적재 ◀────┘
+물리 메모리 부족 → 프로세스 전체를 Disk의 Swap 영역으로 이동
+Swap 영역의 프로세스 → 다시 필요할 때 → 물리 메모리에 적재
 ```
 
 ## 3. Contiguous Memory Allocation
