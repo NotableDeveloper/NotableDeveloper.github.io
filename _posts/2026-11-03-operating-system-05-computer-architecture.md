@@ -27,7 +27,7 @@ tags: [os, computer-architecture, interrupt]
        → 상태 복구 → 중단된 실행 재개
 ```
 
-Trap은 0으로 나누기처럼 동기적으로 발생하는 이벤트다. Trap Handler(Trap Service Routine)가 처리한다. 인터럽트와 달리 실행 상태를 별도로 저장·복원하지 않는다고 설명한다. 시스템 콜은 Trap이다.
+Trap은 0으로 나누기처럼 동기적으로 발생하는 이벤트다. Trap Handler(Trap Service Routine)가 처리한다. 인터럽트와 달리 실행 상태를 별도로 저장·복원하지 않는다. 시스템 콜은 Trap이다.
 
 ## 입출력 레지스터
 
