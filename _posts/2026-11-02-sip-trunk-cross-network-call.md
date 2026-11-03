@@ -171,17 +171,14 @@ sudo systemctl restart asterisk
 
 ## 통화 상태 확인하기
 
-통화가 연결되면 각 Asterisk의 CLI에서 발신 번호, Trunk endpoint, 착신 번호가 순서대로 나타난다. 다음은 통화 흐름을 확인하기 위해 재구성한 예시다.
+통화가 연결되면 각 Asterisk의 CLI에서 발신 번호, Trunk endpoint, 착신 번호를 확인할 수 있다. 다음은 발신 서버와 수신 서버의 로그 이미지에 나온 핵심 순서를 옮긴 것이다. 주소와 동적 채널 식별자는 생략했다.
 
 ```text
--- Executing [7001@5XXX_default:1] Dial("PJSIP/5001", "PJSIP/7001@Another_Trunk")
--- Called PJSIP/7001@Another_Trunk
--- Executing [7001@Another_context:1] Dial("PJSIP/Another_Trunk", "PJSIP/7001")
--- Called PJSIP/7001
--- PJSIP/7001 is ringing
--- PJSIP/7001 answered
--- Channel PJSIP/5001 joined the bridge
--- Channel PJSIP/7001 joined the bridge
+발신 서버: 5001 → PJSIP/7001@Another_Trunk 호출
+수신 서버: Another_Trunk → PJSIP/7001 호출
+PJSIP/7001 is ringing
+PJSIP/7001 answered
+발신·착신 채널이 브리지에 연결됨
 ```
 
 첫 번째 Asterisk에서 `PJSIP/7001@Another_Trunk`가 호출되고, 두 번째 Asterisk에서는 수신 컨텍스트의 `PJSIP/7001`이 호출되는 것이 핵심이다. Trunk 호출이 보이지 않으면 발신 서버의 번호 패턴과 endpoint 이름을 먼저 확인한다. 요청이 상대 서버까지 도달하지만 전화기가 울리지 않으면 수신 서버의 `identify`, context, 착신 번호 규칙을 확인한다.

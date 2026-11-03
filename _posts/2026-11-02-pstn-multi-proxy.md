@@ -8,11 +8,11 @@ tags: [asterisk, pjsip, pstn, proxy, dialplan, voip]
 
 이번 구성의 목표는 내부 전화망과 외부 PSTN망 사이에 통화 경로를 만드는 것이다. 5001번 전화기가 등록된 서버와 7001번 전화기가 등록된 서버는 앞서 만든 SIP-Trunk 환경과 같은 방식으로 준비하고, 여기에 PSTN과 직접 통신하는 Proxy 서버를 추가한다.
 
-~~~text
+```text
 5001 전화기 ──▶ 5001 서버 ──▶ PSTN 연동 Proxy ──▶ PSTN망
 7001 전화기 ──▶ 7001 서버 ──▶ PSTN 연동 Proxy ──▶ PSTN망
 PSTN망 ──▶ PSTN 연동 Proxy ──▶ 내부 서버의 Dialplan ──▶ 5001 또는 7001
-~~~
+```
 
 핵심은 각 서버에 상대방을 PJSIP 계정으로 등록하고, 등록된 상대 endpoint를 Dialplan에서 목적지별로 호출하는 것이다.
 
@@ -22,7 +22,7 @@ PSTN망 ──▶ PSTN 연동 Proxy ──▶ 내부 서버의 Dialplan ──�
 
 내부 사설 네트워크에 있는 서버끼리는 사설 IP를 사용한다. 반면 PSTN망과 연결되는 서버의 계정은 외부 네트워크에서 도달할 수 있는 PSTN 연결용 공인 IP를 사용해야 한다.
 
-~~~text
+```text
 5001번 서버
   5001번 전화기
   7001번 서버
@@ -37,7 +37,7 @@ PSTN 연동 서버
   5001번 서버
   7001번 서버
   PSTN망 (다른 네트워크이므로 공인 IP)
-~~~
+```
 
 각 서버가 등록해야 하는 계정은 로컬 전화기, 상대 Asterisk 서버, PSTN Peer로 나뉜다.
 
@@ -45,7 +45,7 @@ PSTN 연동 서버
 
 계정 등록만으로는 통화가 전달되지 않는다. 각 서버는 번호 대역에 따라 어느 endpoint로 전화를 넘길지 Dialplan에 선언해야 한다.
 
-~~~text
+```text
 5001번 서버
   로컬 5001번대 내선 ──▶ 내부 단말
   7001번대 내선 ───────▶ 7001번 서버
@@ -60,11 +60,11 @@ PSTN 연동 서버
   5001번 서버 ──▶ 내부 서버
   7001번 서버 ──▶ 내부 서버
   PSTN에서 들어온 번호 ──▶ 지정된 내부 전화기
-~~~
+```
 
 5001번 서버에서는 로컬 내선, 상대 서버, PSTN 발신, 외부에서 들어오는 통화를 각각 분리한다.
 
-~~~ini
+```ini
 [5XXX_default]
 exten => _5XXX,1,Dial(PJSIP/${EXTEN})
 same => n,Hangup
@@ -84,7 +84,7 @@ same => n,Hangup
 exten => _070.,1,Noop(CALLERID=${CALLERID(all)})
 same => n,Dial(PJSIP/5001)
 same => n,Hangup
-~~~
+```
 
 ## Outbound 라우팅
 
@@ -96,14 +96,14 @@ same => n,Hangup
 
 외부 네트워크로 나가는 통화는 Dial 명령의 endpoint 이름으로 경로를 선택한다.
 
-~~~ini
+```ini
 exten => _7XXX,1,Dial(PJSIP/${EXTEN}@Another_Trunk)
 same => n,Hangup
 
 exten => _010.,1,Noop(CALLER=${CALLERID(all)})
 same => n,Dial(PJSIP/${EXTEN}@Pstn_Trunk)
 same => n,Hangup
-~~~
+```
 
 5001번 사용자가 7001번으로 전화하면 Another_Trunk가 선택된다. 010으로 시작하는 번호를 입력하면 Pstn_Trunk가 선택되어 PSTN 연동 서버로 통화가 전달된다.
 
@@ -111,7 +111,7 @@ same => n,Hangup
 
 반대 방향의 통화는 외부에서 들어온 번호를 내부 전화기로 연결해야 한다. 예시에서는 PSTN 연동 서버가 070으로 시작하는 수신 번호를 5001번으로 전달한다.
 
-~~~ini
+```ini
 [7001_Context]
 exten => _5XXX,1,Dial(PJSIP/${EXTEN})
 same => n,Hangup
@@ -120,7 +120,7 @@ same => n,Hangup
 exten => _070.,1,Noop(CALLERID=${CALLERID(all)})
 same => n,Dial(PJSIP/5001)
 same => n,Hangup
-~~~
+```
 
 이 설정은 PSTN에서 070으로 시작하는 번호로 전화가 들어오면 발신자 정보를 남긴 뒤 내부 5001 endpoint를 호출한다. 실제로 연결할 내선이 여러 개라면 수신 번호 대역이나 DID에 따라 다른 내부 endpoint로 분기하면 된다.
 

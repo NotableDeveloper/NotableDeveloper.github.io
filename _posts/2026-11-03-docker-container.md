@@ -26,3 +26,18 @@ Docker 컨테이너는 Linux 커널의 격리 기능을 활용해 프로세스�
 `docker create`는 컨테이너를 만들지만 시작하지 않는다. `docker start`로 실행하고, `docker pause`와 `docker unpause`로 실행을 일시 중지하거나 재개할 수 있다. `docker stop`은 정상 종료를 요청하고, `docker kill`은 프로세스에 종료 신호를 보낸다. 정지한 컨테이너는 `docker start`로 다시 시작할 수 있으며, `docker rm`으로 제거하면 컨테이너 자체가 시스템에서 사라진다.
 
 컨테이너의 생명주기와 데이터를 분리하려면 데이터를 볼륨으로 관리한다. 컨테이너를 지워도 보존해야 할 파일을 쓰기 계층에만 남겨두지 않는다.
+
+
+## 컨테이너 실행과 상태 확인
+
+이미지에서 컨테이너를 만들고 시작한 뒤, 상태를 확인하고 정지·제거하는 기본 흐름은 다음과 같다.
+
+```sh
+docker create --name web nginx
+docker start web
+docker ps
+docker stop web
+docker rm web
+```
+
+`docker run --name web -d nginx`를 사용하면 생성과 시작을 한 번에 처리한다. 컨테이너를 제거하면 쓰기 계층의 변경도 사라지므로 필요한 파일은 볼륨에 저장한다.

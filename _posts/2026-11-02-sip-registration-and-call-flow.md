@@ -43,14 +43,19 @@ SIP 전화기에는 보통 계정 이름, 비밀번호, SIP 서버 주소를 입
 전화기가 보내는 첫 요청은 `REGISTER`다. 이 요청에는 등록할 SIP 주소, 전화기의 현재 접속 주소, 요청을 식별하기 위한 정보가 포함된다.
 
 ```text
-Received SIP request from UDP:<client-ip>:<client-port>
-REGISTER sip:<asterisk-ip> SIP/2.0
-From: "5001" <sip:5001@<asterisk-ip>>
-To: "5001" <sip:5001@<asterisk-ip>>
+<--- Received SIP request (539 bytes) from UDP:<IP:PORT> --->
+REGISTER sip:<Asterisk IP> SIP/2.0
+Via: SIP/2.0/UDP <IP:PORT>;rport;branch=<branch-id>
+Max-Forwards: 70
+From: "5001" <sip:5001@<Asterisk IP>>;tag=<tag>
+To: "5001" <sip:5001@<Asterisk IP>>
 Call-ID: <registration-call-id>
 CSeq: 41892 REGISTER
-Contact: <sip:5001@<client-ip>:<client-port>>
+User-Agent: MicroSIP/3.21.4
+Contact: "5001" <sip:5001@<IP:PORT>;ob>
 Expires: 300
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE,
+       NOTIFY, REFER, MESSAGE, OPTIONS
 Content-Length: 0
 ```
 
@@ -61,15 +66,16 @@ Content-Length: 0
 Asterisk는 첫 REGISTER를 바로 허용하지 않고 인증 정보를 요구한다. 이때 `401 Unauthorized` 응답을 보낸다. 여기서 401은 등록이 영구적으로 거부되었다는 뜻이 아니라, 인증 없이 보낸 첫 요청에 대해 인증 절차를 시작하라는 의미다.
 
 ```text
-Transmitting SIP response to UDP:<client-ip>:<client-port>
+<--- Transmitting SIP response (570 bytes) to UDP:<IP:PORT> --->
 SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP <IP:PORT>;rport=<port>;received=<Asterisk IP>;branch=<branch-id>
 Call-ID: <registration-call-id>
+From: "5001" <sip:5001@<Asterisk IP>>;tag=<tag>
+To: "5001" <sip:5001@<Asterisk IP>>;tag=<server-tag>
 CSeq: 41892 REGISTER
-WWW-Authenticate: Digest realm="asterisk",
-                 nonce="<server-nonce>",
-                 opaque="<opaque-value>",
-                 algorithm=MD5,
-                 qop="auth"
+WWW-Authenticate: Digest realm="asterisk", nonce="<nonce>",
+                  opaque="<opaque>", algorithm=MD5, qop="auth"
+Server: Asterisk PBX 18.22.0
 Content-Length: 0
 ```
 
@@ -88,34 +94,39 @@ Content-Length: 0
 전화기는 인증 정보를 포함해 같은 등록 요청을 다시 보낸다. 요청의 `CSeq`는 증가하고 `Authorization` 헤더가 추가된다.
 
 ```text
-Received SIP request from UDP:<client-ip>:<client-port>
-REGISTER sip:<asterisk-ip> SIP/2.0
-From: "5001" <sip:5001@<asterisk-ip>>
-To: "5001" <sip:5001@<asterisk-ip>>
+<--- Received SIP request (827 bytes) from UDP:<IP:PORT> --->
+REGISTER sip:<Asterisk IP> SIP/2.0
+Via: SIP/2.0/UDP <IP:PORT>;rport;branch=<new-branch-id>
+Max-Forwards: 70
+From: "5001" <sip:5001@<Asterisk IP>>;tag=<tag>
+To: "5001" <sip:5001@<Asterisk IP>>
 Call-ID: <registration-call-id>
 CSeq: 41893 REGISTER
-Authorization: Digest username="5001",
-                      realm="asterisk",
-                      nonce="<server-nonce>",
-                      uri="sip:<asterisk-ip>",
-                      response="<calculated-response>",
-                      algorithm=MD5,
-                      qop=auth,
-                      nc=00000001
-Contact: <sip:5001@<client-ip>:<client-port>>
+User-Agent: MicroSIP/3.21.4
+Contact: "5001" <sip:5001@<IP:PORT>;ob>
 Expires: 300
+Authorization: Digest username="5001", realm="asterisk",
+               nonce="<nonce>", uri="sip:<Asterisk IP>",
+               response="<digest-response>", algorithm=MD5,
+               cnonce="<client-nonce>", opaque="<opaque>",
+               qop=auth, nc=00000001
 Content-Length: 0
 ```
 
 Asterisk도 같은 규칙으로 기대하는 `response` 값을 계산한 뒤 전화기가 보낸 값과 비교한다. 두 값이 일치하면 인증이 성공한다.
 
 ```text
-Transmitting SIP response to UDP:<client-ip>:<client-port>
+<--- Transmitting SIP response (521 bytes) to UDP:<IP:PORT> --->
 SIP/2.0 200 OK
+Via: SIP/2.0/UDP <IP:PORT>;rport=<port>;received=<Asterisk IP>;branch=<branch-id>
 Call-ID: <registration-call-id>
+From: "5001" <sip:5001@<Asterisk IP>>;tag=<tag>
+To: "5001" <sip:5001@<Asterisk IP>>;tag=<server-tag>
 CSeq: 41893 REGISTER
-Contact: <sip:5001@<client-ip>:<client-port>>;expires=299
+Date: Wed, 04 Sep 2024 06:22:09 GMT
+Contact: <sip:5001@<IP:PORT>;ob>;expires=299
 Expires: 300
+Server: Asterisk PBX 18.22.0
 Content-Length: 0
 ```
 

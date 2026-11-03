@@ -14,7 +14,7 @@ tags: [docker, logging, observability]
 docker container logs [옵션] <컨테이너 ID 또는 이름>
 ```
 
-원문 옵션 표의 내용을 텍스트로 옮기면 다음과 같다.
+자주 쓰는 조회 옵션은 다음과 같다.
 
 | 옵션 | 설명 |
 | --- | --- |
@@ -61,7 +61,7 @@ Docker 데몬 ── 로깅 드라이버 ── 로그 전달기 ── 중앙 �
                 └─ awslogs ───────────────────▶ CloudWatch Logs
 ```
 
-드라이버를 구성할 때는 `max-size`, `max-file` 같은 파일 회전 관련 옵션과, 전달 대상이 요구하는 `syslog-address`, `syslog-facility` 같은 옵션을 확인한다. `labels`, `env`, `mode` 등 로그에 포함할 메타데이터와 버퍼링 동작을 정하는 옵션도 드라이버별로 다르게 지원된다. 원문에는 이 설정을 `docker container logs`에 전달하는 형태로 적었지만, `--log-driver`와 `--log-opt`는 로그 조회 옵션이 아니라 컨테이너를 만들 때 지정하는 로깅 설정이다.
+드라이버를 구성할 때는 `max-size`, `max-file` 같은 파일 회전 관련 옵션과 전달 대상이 요구하는 `syslog-address`, `syslog-facility`를 확인한다. `labels`, `env`, `mode`는 로그에 포함할 메타데이터와 버퍼링 동작을 정하며 지원 여부는 드라이버마다 다르다. `--log-driver`와 `--log-opt`는 로그 조회 옵션이 아니라 컨테이너를 만들 때 지정하는 로깅 설정이다.
 
 ```sh
 docker run --log-driver=<드라이버> --log-opt=<키>=<값> <이미지>

@@ -119,19 +119,22 @@ Async: true
 
 ## 통화 흐름 확인하기
 
-AMI는 Originate 요청을 받은 뒤 Asterisk 내부에서 채널을 생성하고, PJSIP와 Dialplan을 통해 통화를 진행한다. 다음은 실제 원문 로그를 그대로 옮기지 않고 흐름에 맞춰 재구성한 예시다.
+AMI는 Originate 요청을 받은 뒤 Asterisk 내부에서 채널을 만들고 PJSIP와 Dialplan을 실행한다. 다음은 Asterisk CLI 로그 이미지에서 확인되는 연결·호출 순서다. IP 주소와 동적 채널 ID는 가렸다.
 
 ```text
-Manager 'sample' logged on
+Manager 'sample' logged on from <IP:PORT>
 Called 5001
-PJSIP/5001 is ringing
-PJSIP/5001 answered
-Executing [5002@simple:1] Dial("PJSIP/5001", "PJSIP/5002")
+PJSIP/5001-<channel-id> is ringing
+PJSIP/5001-<channel-id> answered
+Executing [5002@simple:1] Dial("PJSIP/5001-<channel-id>", "PJSIP/5002")
 Called PJSIP/5002
-PJSIP/5002 is ringing
-PJSIP/5002 answered PJSIP/5001
-Channel PJSIP/5001 joined 'simple_bridge'
-Channel PJSIP/5002 joined 'simple_bridge'
+PJSIP/5002-<channel-id> is ringing
+PJSIP/5002-<channel-id> answered PJSIP/5001-<channel-id>
+Channel PJSIP/5001-<channel-id> joined 'simple_bridge'
+Channel PJSIP/5002-<channel-id> joined 'simple_bridge'
+Bridge <bridge-id> switching to native_rtp
+Channel PJSIP/5002-<channel-id> left 'native_rtp'
+Spawn extension (simple, 5002, 1) exited non-zero on 'PJSIP/5001-<channel-id>'
 ```
 
 흐름을 단계로 나누면 다음과 같다.
