@@ -28,16 +28,16 @@
           <ul>
             {% for category in site.data.categories %}
               <li>
-                <a href="{{ category.url | relative_url }}">{{ category.title }}</a>
+                <a href="{{ category.url | relative_url }}"{% if page.url == category.url %} aria-current="page"{% endif %}>{{ category.title }}</a>
                 {% if category.children %}
                   <ul>
                     {% for child in category.children %}
                       <li>
-                        <a href="{{ child.url | relative_url }}">{{ child.title }}</a>
+                        <a href="{{ child.url | relative_url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a>
                         {% if child.children %}
                           <ul>
                             {% for grandchild in child.children %}
-                              <li><a href="{{ grandchild.url | relative_url }}">{{ grandchild.title }}</a></li>
+                              <li><a href="{{ grandchild.url | relative_url }}"{% if page.url == grandchild.url %} aria-current="page"{% endif %}>{{ grandchild.title }}</a></li>
                             {% endfor %}
                           </ul>
                         {% endif %}
