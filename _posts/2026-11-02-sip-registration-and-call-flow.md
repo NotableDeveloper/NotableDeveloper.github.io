@@ -2,7 +2,7 @@
 title: "SIP 패킷으로 살펴보는 전화기 등록과 통화 흐름"
 description: "Asterisk에 SIP 전화기를 등록할 때와 통화를 시작할 때 오가는 패킷을 REGISTER, Digest 인증, INVITE, SDP 중심으로 정리한다."
 date: 2026-11-02 23:45:00 +0900
-categories: [Asterisk, SIP]
+categories: [Asterisk, Practice]
 tags: [asterisk, sip, pjsip, voip, packet]
 ---
 
