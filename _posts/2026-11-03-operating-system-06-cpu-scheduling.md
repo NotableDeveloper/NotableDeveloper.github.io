@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, cpu-scheduling]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 운영체제 위에서 동작하는 프로세스는 하나의 CPU에 의해 동작할 수 있다. 그러나 컴퓨터는 한 번에 하나의 작업만 수행되는 것이 아니라, 다수의 작업이 수행되는 환경이라고 앞선 내용에서 다루었다. 이런 환경에서 CPU의 수는 한정적이지만 프로세스는 CPU보다 많이 생성되어 실행이 되다보니, 이를 적절히 처리할 방법을 필요로 하게 되었다.
 
 이러한 처리 방법을 Scheduling이라고 하며, CPU가 프로세스에게 자원사용을 어떤 기준으로 할당할 것인 지를 결정하는 Policy를 말한다. 조금 더 구체적으로는 Multi programming에 기반하여 Memory 내에 실행이 준비된(Ready state) 상태의 프로세스들 중에 하나에게 CPU 자원을 할당하는 정책이다. CPU Scheduling의 목표는 CPU가 Idle 상태에 빠지는 시간없이 단위 시간당 처리하는 작업량을 최대화하는 것으로 한다.
@@ -90,7 +88,7 @@ CPU Scheduling의 결정은 다음과 같은 시점에 이루어진다.
 
     [![종류별로 분리한 Ready Queue](/assets/images/operating-system/06/figure-01.png)](/assets/images/operating-system/06/figure-01.png)
 
-    **화살표로 읽기 — 종류별로 분리한 Ready Queue**
+    **종류별로 분리한 Ready Queue**
 
     ```text
     프로세스 분류
@@ -106,7 +104,7 @@ CPU Scheduling의 결정은 다음과 같은 시점에 이루어진다.
 
     [![Multilevel Feedback Queue 이동](/assets/images/operating-system/06/figure-02.png)](/assets/images/operating-system/06/figure-02.png)
 
-    **화살표로 읽기 — Multilevel Feedback Queue 이동**
+    **Multilevel Feedback Queue 이동**
 
     ```text
     새 프로세스 → Q0 (Round Robin, Quantum = 8) ──완료──→ 종료

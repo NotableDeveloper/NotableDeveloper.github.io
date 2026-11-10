@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, task-processing]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 1950년대 ~ 1960년대의 컴퓨터는 매우 원시적인 형태였다. 기계적인 스위치를 이용하여 1bit 단위 (0과 1의 두 가지 신호)로 컴퓨터에 입력하여 다루었다. 이후 기계어가 등장하고, 펀치 카드(사전에 입력을 완성시킨 프로그램과 유사함.)로 컴퓨터를 구동 시키는 방식으로 발전하게 된다.
 
 이 시절 컴퓨터의 고질적인 문제는 CPU와 I/O 장치 사이의 속도 차이에 의해, CPU가 자주 Idle 상태로 전환된다는 것이었다. (입출력 장치의 속도가 현저히 느려서, CPU가 연산을 끝내고 긴 시간동안 대기하는 상태가 되어버리는 것.)
@@ -16,7 +14,7 @@ tags: [os, task-processing]
 
 다음과 같은 표를 보자.
 
-[![02. Task Processing의 발전 과정 원문 그림 1](/assets/images/operating-system/02/figure-01.png)](/assets/images/operating-system/02/figure-01.png)
+[![02. Task Processing의 발전 과정 그림 1](/assets/images/operating-system/02/figure-01.png)](/assets/images/operating-system/02/figure-01.png)
 CPU의 연산이 ms(마이크로 초) 단위인 것과 아래의 표에서 Access time이 ns 단위이고, 각각의 메모리 공간마다 Access time이 엄청난 차이를 보이는 것을 봤을 때, 메모리 공간 대비 CPU의 연산 시간과 I/O 시간이 엄청난 차이가 있음을 알 수 있다. 이러한 문제를 해결하기 위해 다음과 같은 프로세스 관리 기법(Scheduling)들이 등장했다.
 
 - Multi programming
@@ -25,7 +23,7 @@ CPU의 연산이 ms(마이크로 초) 단위인 것과 아래의 표에서 Acces
 
 [![메모리 안의 작업 순환](/assets/images/operating-system/02/figure-02.png)](/assets/images/operating-system/02/figure-02.png)
 
-**화살표로 읽기 — 메모리 안의 작업 순환**
+**메모리 안의 작업 순환**
 
 ```text
 Memory: [Job 1] → [Job 2] → [Job 3] → [Job 4]
@@ -42,7 +40,7 @@ Memory: [Job 1] → [Job 2] → [Job 3] → [Job 4]
 
 [![시간을 나누어 CPU 사용](/assets/images/operating-system/02/figure-03.png)](/assets/images/operating-system/02/figure-03.png)
 
-**화살표로 읽기 — 시간을 나누어 CPU 사용**
+**시간을 나누어 CPU 사용**
 
 ```text
 시간 → 0     1     2     3     4     5     6     7     8
@@ -64,7 +62,7 @@ Multi tasking의 좋은 예시는 다음과 같은 DBMS(Database management syst
 
 [![DBMS의 작업 분담](/assets/images/operating-system/02/figure-04.png)](/assets/images/operating-system/02/figure-04.png)
 
-**화살표로 읽기 — DBMS의 작업 분담**
+**DBMS의 작업 분담**
 
 ```text
 DBMS (Parent Process)

@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, memory-management, page-replacement]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 <!-- section -->
 
 ## 1. Page Replacement
@@ -36,7 +34,7 @@ Page Replacement란 물리 메모리에 위치한 Page를 Disk에 저장하고, 
 
     먼저 Frame이 할당된 Page를 먼저 교체하는 방식의 알고리즘이다. 가장 단순한 알고리즘이며, FIFO Queue로 구현이 가능하다. 멀티미디어 데이터를 처리하는 데에 특화되어 있다.
 
-    [![12. Memory Management 2 원문 그림 1](/assets/images/operating-system/12/figure-01.png)](/assets/images/operating-system/12/figure-01.png)
+    [![12. Memory Management 2 그림 1](/assets/images/operating-system/12/figure-01.png)](/assets/images/operating-system/12/figure-01.png)
     앞서 정의한 상황에서는 FIFO 알고리즘은 Page Fault가 15번 발생한다.
 
     1. Second Change Replacement Algorithm
@@ -54,7 +52,7 @@ Page Replacement란 물리 메모리에 위치한 Page를 Disk에 저장하고, 
 
         [![Clock 알고리즘의 순환](/assets/images/operating-system/12/figure-02.png)](/assets/images/operating-system/12/figure-02.png)
 
-        **화살표로 읽기 — Clock 알고리즘의 순환**
+        **Clock 알고리즘의 순환**
 
         ```text
         Hand → 현재 페이지의 Reference Bit 확인
@@ -67,7 +65,7 @@ Page Replacement란 물리 메모리에 위치한 Page를 Disk에 저장하고, 
 
         사용 빈도가 낮은 페이지를 교체하는 기법. 지금까지 가장 적게 참조된 페이지가 교체 대상으로 선택되는 것이다.
 
-        [![12. Memory Management 2 원문 그림 3](/assets/images/operating-system/12/figure-03.png)](/assets/images/operating-system/12/figure-03.png)
+        [![12. Memory Management 2 그림 3](/assets/images/operating-system/12/figure-03.png)](/assets/images/operating-system/12/figure-03.png)
         단, 프로그램 실행 초기에 많이 사용된 페이지는 그 이후에 사용되지 않음에도 사용 빈도가 높은 것으로 기록되어 교체되지 않고 계속 프레임을 차지하는 문제가 발생한다.
 
 
@@ -80,7 +78,7 @@ Page Replacement란 물리 메모리에 위치한 Page를 Disk에 저장하고, 
 
     페이지 교체가 필요한 시점에는 참조 비트와 변형 비트의 값을 비교하며 교체의 대상을 결정한다. (두 비트 값이 0 이면 가장 높은 교체 순위를 가짐.)
 
-    [![12. Memory Management 2 원문 그림 4](/assets/images/operating-system/12/figure-04.png)](/assets/images/operating-system/12/figure-04.png)
+    [![12. Memory Management 2 그림 4](/assets/images/operating-system/12/figure-04.png)](/assets/images/operating-system/12/figure-04.png)
     1. Least Recently Used Algorithm
 
         가장 오랜 시간동안 참조되지 않은 페이지부터 먼저 교체하는 기법이다. 가장 이상적인 페이지 교체 알고리즘이며, 구체적은 구현 방법은 다음과 같다.
@@ -89,7 +87,7 @@ Page Replacement란 물리 메모리에 위치한 Page를 Disk에 저장하고, 
     - Counter : 카운터를 사용하여 참조된 시간을 기록한다.
     - Queue : 한번 사용한 페이지를 Queue의 가장 위로 이동 시킨다. 이렇게 되면 Queue에 가장 위에 위치한 페이지는 가장 최근에 사용한 페이지이고, Queue의 가장 아래에 위치한 페이지는 가장 오래 전에 사용된 페이지가 된다.
 
-        [![12. Memory Management 2 원문 그림 5](/assets/images/operating-system/12/figure-05.png)](/assets/images/operating-system/12/figure-05.png)
+        [![12. Memory Management 2 그림 5](/assets/images/operating-system/12/figure-05.png)](/assets/images/operating-system/12/figure-05.png)
         앞선 상황에서 LRU Algorithm의 Page Fault는 총 12번 발생한다.
 
 <!-- section -->
@@ -100,7 +98,7 @@ Page Replacement란 물리 메모리에 위치한 Page를 Disk에 저장하고, 
 
 [![Swap Out과 Swap In의 방향](/assets/images/operating-system/12/figure-06.png)](/assets/images/operating-system/12/figure-06.png)
 
-**화살표로 읽기 — Swap Out과 Swap In의 방향**
+**Swap Out과 Swap In의 방향**
 
 ```text
 Main Memory의 Program A ──swap out──→ Disk의 Swap 영역
@@ -108,7 +106,7 @@ Main Memory의 Program B ←──swap in─── Disk의 Swap 영역
 ```
 [![새 프로세스를 위한 공간 확보](/assets/images/operating-system/12/figure-07.png)](/assets/images/operating-system/12/figure-07.png)
 
-**화살표로 읽기 — 새 프로세스를 위한 공간 확보**
+**새 프로세스를 위한 공간 확보**
 
 ```text
 [OS | Process 5 | Process 8 | Process 2]
@@ -129,17 +127,17 @@ Main Memory의 Program B ←──swap in─── Disk의 Swap 영역
 
 다음은 물리 메모리의 영역을 User Process가 어떻게 나누어 쓰는 지에 관한 내용이다.
 
-[![12. Memory Management 2 원문 그림 8](/assets/images/operating-system/12/figure-08.png)](/assets/images/operating-system/12/figure-08.png)
+[![12. Memory Management 2 그림 8](/assets/images/operating-system/12/figure-08.png)](/assets/images/operating-system/12/figure-08.png)
 Single Partition Allocation :
 
 가장 단순하게 메모리를 사용하는 방법이다. User Process의 영역을 한 번에 하나만 적재하는 방식이다.
 
-[![12. Memory Management 2 원문 그림 9](/assets/images/operating-system/12/figure-09.png)](/assets/images/operating-system/12/figure-09.png)
+[![12. Memory Management 2 그림 9](/assets/images/operating-system/12/figure-09.png)](/assets/images/operating-system/12/figure-09.png)
 Multiple Partition Allocation :
 
 Multi programming 개념을 도입하여 User Process의 영역에 여러 개의 User Process가 적재될 수 있도록 영역을 나누는 방식이다.
 
-[![12. Memory Management 2 원문 그림 10](/assets/images/operating-system/12/figure-10.png)](/assets/images/operating-system/12/figure-10.png)
+[![12. Memory Management 2 그림 10](/assets/images/operating-system/12/figure-10.png)](/assets/images/operating-system/12/figure-10.png)
 No Partition :
 
 각 User Process가 필요에 따라 메모리 영역을 구분 없이 사용하는 방식이다.이 경우, Page/Swap Out 시에 Garbage Collection이 필요하다.
@@ -150,7 +148,7 @@ No Partition :
 
 User process가 메모리에 적재될 때, 물리 메모리의 운영체제 영역을 제외한 User Process 영역에 배치된다. 수 많은 프로세스들이 배치되다보면 전체 여유 공간은 새로운 프로세스를 할당하기 충분하지만 아래 사진처럼 단편적으로 나눠지는 문제가 발생한다.
 
-[![12. Memory Management 2 원문 그림 11](/assets/images/operating-system/12/figure-11.png)](/assets/images/operating-system/12/figure-11.png)
+[![12. Memory Management 2 그림 11](/assets/images/operating-system/12/figure-11.png)](/assets/images/operating-system/12/figure-11.png)
 이 때, 새로운 프로세스가 할당되어 메모리의 빈 공간 중에 어딘가로 배치되어야 한다면 이를 어떻게할 것인지에 대한 고민이 필요하다. 이러한 문제를 단편화(Fragmentation)라고 하며, 이를 다시 외부적(External)인 지, 내부적(Internal)인 지로 나눌 수 있다.
 
 External Fragmentation : 프로세스에게 할당 후 남은 메모리의 전체 공간이 새로운 프로세스를 할당하기에는 충분하지만, 그 공간이 연속적이지 않은 경우를 말한다. Paging(가상 메모리의 사용)은 이러한 문제를 해결하기 위한 방법이다.

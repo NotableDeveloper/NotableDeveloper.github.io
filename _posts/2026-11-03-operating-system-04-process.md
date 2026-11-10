@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, process]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 <!-- section -->
 
 ## 1. Process의 생성 과정
@@ -16,7 +14,7 @@ tags: [os, process]
 
 [![소스 코드에서 메모리 적재까지](/assets/images/operating-system/04/figure-01.png)](/assets/images/operating-system/04/figure-01.png)
 
-**화살표로 읽기 — 소스 코드에서 메모리 적재까지**
+**소스 코드에서 메모리 적재까지**
 
 ```text
 Source Code ──Compiler──→ Object File
@@ -49,7 +47,7 @@ Loader에 의해 프로그램이 메모리에 로드될 때, GCC는 'C Runtime S
 
 [![실행 파일과 런타임 시작 흐름](/assets/images/operating-system/04/figure-02.png)](/assets/images/operating-system/04/figure-02.png)
 
-**화살표로 읽기 — 실행 파일과 런타임 시작 흐름**
+**실행 파일과 런타임 시작 흐름**
 
 ```text
 Executable File ──Loader──→ Memory 안의 실행 파일
@@ -66,7 +64,7 @@ _start → C 라이브러리·쓰레드 환경 초기화 → main()
 
 [![실행 파일과 프로세스 메모리의 대응](/assets/images/operating-system/04/figure-03.png)](/assets/images/operating-system/04/figure-03.png)
 
-**화살표로 읽기 — 실행 파일과 프로세스 메모리의 대응**
+**실행 파일과 프로세스 메모리의 대응**
 
 ```text
 Disk: a.out                     Memory: Process
@@ -100,7 +98,7 @@ Disk: a.out                     Memory: Process
 
 [![프로세스 상태 전이](/assets/images/operating-system/04/figure-04.png)](/assets/images/operating-system/04/figure-04.png)
 
-**화살표로 읽기 — 프로세스 상태 전이**
+**프로세스 상태 전이**
 
 ```text
 New ──admitted──→ Ready ──scheduler dispatch──→ Running
@@ -116,7 +114,7 @@ Ready → Ready Queue    Waiting → Waiting Queue
 ```
 커널이 프로세스의 상태를 관리한다는 것은, 메모리에 프로세스에 대한 데이터를 적재하고, 필요에 따라 적절히 참조하며 Scheduling을 한다는 뜻이다. 메모리에 적재되는 프로세스에 대한 정보를 Process Control Block이라 부르며, 일부 생략되기는 하였으나 다음과 정보를 담아 구조체 형태로 구현되어 있다.
 
-[![04. Process 원문 그림 5](/assets/images/operating-system/04/figure-05.png)](/assets/images/operating-system/04/figure-05.png)
+[![04. Process 그림 5](/assets/images/operating-system/04/figure-05.png)](/assets/images/operating-system/04/figure-05.png)
 프로세스가 커널에 의해 Context Switching이 되어야 할 때는 위와 같은 PCB를 통해 프로세스를 교체하면서 프로세스 간의 전환이 일어나게 된다. 이러한 프로세스 전환은 프로세서(Processor)의 구조에 따라 차이를 보인다.
 
 - CISC : 명령어의 구조를 복잡하게 구성하는 프로세서 구조이다. 명령어의 구조가 복잡하니 회로의 구성도 복잡해지고, 그만큼 레지스터가 갖게 되는 용량이 낮다보니 프로세스의 전환이 발생할 때마다 채워야할 레지스터의 수가 적다. 그러므로 Context Switch의 속도가 빠른 프로세서 구조이다.
@@ -132,7 +130,7 @@ Ready → Ready Queue    Waiting → Waiting Queue
 
 [![fork와 exec의 흐름](/assets/images/operating-system/04/figure-06.png)](/assets/images/operating-system/04/figure-06.png)
 
-**화살표로 읽기 — fork와 exec의 흐름**
+**fork와 exec의 흐름**
 
 ```text
 Parent ──fork()──┬→ Parent 계속 실행
@@ -189,7 +187,7 @@ return EXIT_SUCCESS;
 
 [![프로세스 계층](/assets/images/operating-system/04/figure-07.png)](/assets/images/operating-system/04/figure-07.png)
 
-**화살표로 읽기 — 프로세스 계층**
+**프로세스 계층**
 
 ```text
 root

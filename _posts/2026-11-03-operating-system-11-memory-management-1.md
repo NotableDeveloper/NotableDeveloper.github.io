@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, memory-management, paging]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 여러 프로세스들이 동시에 메모리에 적재되어 실행되면서, 메모리를 공유해서 사용하는 것을 고려하게 되었다. 컴퓨터의 메모리는 한정적인 자원이므로 이를 적절히 관리해주어야 한다. 이번 글에서는 운영체제가 메모리를 어떻게 관리하는 지에 대해 정리한다.
 
 <!-- section -->
@@ -25,7 +23,7 @@ tags: [os, memory-management, paging]
 
 [![주소가 정해지는 단계](/assets/images/operating-system/11/figure-01.png)](/assets/images/operating-system/11/figure-01.png)
 
-**화살표로 읽기 — 주소가 정해지는 단계**
+**주소가 정해지는 단계**
 
 ```text
 Source program → Compiler / Assembler → Object module
@@ -61,7 +59,7 @@ CPU에서 물리 주소에 상대적인 주소를 사용할 경우, 프로그램
 
 [![재배치 레지스터를 이용한 주소 변환](/assets/images/operating-system/11/figure-02.png)](/assets/images/operating-system/11/figure-02.png)
 
-**화살표로 읽기 — 재배치 레지스터를 이용한 주소 변환**
+**재배치 레지스터를 이용한 주소 변환**
 
 ```text
 CPU ──논리 주소 346──→ MMU: 346 + 14000 ──물리 주소 14346──→ Memory
@@ -72,7 +70,7 @@ CPU ──논리 주소 346──→ MMU: 346 + 14000 ──물리 주소 14346�
 
 [![가상 주소를 물리 주소로 번역](/assets/images/operating-system/11/figure-03.png)](/assets/images/operating-system/11/figure-03.png)
 
-**화살표로 읽기 — 가상 주소를 물리 주소로 번역**
+**가상 주소를 물리 주소로 번역**
 
 ```text
 CPU ──Virtual address──→ Translation ──Physical address──→ Memory
@@ -81,7 +79,7 @@ CPU ──Virtual address──→ Translation ──Physical address──→ M
 
 [![MMU와 버스 연결](/assets/images/operating-system/11/figure-04.png)](/assets/images/operating-system/11/figure-04.png)
 
-**화살표로 읽기 — MMU와 버스 연결**
+**MMU와 버스 연결**
 
 ```text
 CPU → MMU: 가상 주소 전달
@@ -95,7 +93,7 @@ CPU → MMU: 가상 주소 전달
 
 [![가상 메모리와 저장 공간의 대응](/assets/images/operating-system/11/figure-05.png)](/assets/images/operating-system/11/figure-05.png)
 
-**화살표로 읽기 — 가상 메모리와 저장 공간의 대응**
+**가상 메모리와 저장 공간의 대응**
 
 ```text
 프로세스의 가상 주소 공간 → 매핑 테이블
@@ -115,14 +113,14 @@ Physical Memory ←──필요한 페이지 이동──→ Secondary Storage
 
 [![페이지와 프레임 매핑](/assets/images/operating-system/11/figure-06.png)](/assets/images/operating-system/11/figure-06.png)
 
-**화살표로 읽기 — 페이지와 프레임 매핑**
+**페이지와 프레임 매핑**
 
 ```text
 Logical Page → Physical Frame
  0 → 2       1 → 5       2 → 8       3 → 6       4 → 3
  5 → 4       6 → 0       7 → 1       8 → 6       9 → 9
 
-원문 그림에서는 Page 3과 Page 8이 모두 Frame 6을 가리킨다.
+그림에서는 Page 3과 Page 8이 모두 Frame 6을 가리킨다.
 ```
 가상 메모리 주소 공간과 물리 메모리 주소 공간에 연결된 상태를 보면,  0번 Page는 2번 Frame에 연결되어 있고, 매핑 테이블에도 잘 기록된 것을 볼 수 있다. 이처럼 Page와 Frame 간의 연결 상태를 기록해둔 것이 매핑 테이블이다.
 
@@ -138,7 +136,7 @@ Page가 Frame과 잘 연결되었다면, 이는 하나의 가상 메모리(Page)
 
     [![페이지 번호와 오프셋의 변환](/assets/images/operating-system/11/figure-07.png)](/assets/images/operating-system/11/figure-07.png)
 
-    **화살표로 읽기 — 페이지 번호와 오프셋의 변환**
+    **페이지 번호와 오프셋의 변환**
 
     ```text
     CPU의 논리 주소 [p | d]
@@ -179,7 +177,7 @@ Page가 Frame과 잘 연결되었다면, 이는 하나의 가상 메모리(Page)
 
 [![TLB 적중과 실패 경로](/assets/images/operating-system/11/figure-08.png)](/assets/images/operating-system/11/figure-08.png)
 
-**화살표로 읽기 — TLB 적중과 실패 경로**
+**TLB 적중과 실패 경로**
 
 ```text
 CPU → 논리 주소 [p | d] → TLB에서 p 검색
@@ -196,7 +194,7 @@ CPU → 논리 주소 [p | d] → TLB에서 p 검색
 
 [![다단계 페이지 테이블 탐색](/assets/images/operating-system/11/figure-09.png)](/assets/images/operating-system/11/figure-09.png)
 
-**화살표로 읽기 — 다단계 페이지 테이블 탐색**
+**다단계 페이지 테이블 탐색**
 
 ```text
 Logical Address
@@ -222,7 +220,7 @@ Physical Address Space (text / data / stack)
 
 [![일반 테이블과 역 페이지 테이블](/assets/images/operating-system/11/figure-10.png)](/assets/images/operating-system/11/figure-10.png)
 
-**화살표로 읽기 — 일반 테이블과 역 페이지 테이블**
+**일반 테이블과 역 페이지 테이블**
 
 ```text
 일반 테이블: Page 번호 → Frame 번호
@@ -236,7 +234,7 @@ Inverted Page Table을 도식화하면 다음과 같다.
 
 [![역 페이지 테이블로 주소 변환](/assets/images/operating-system/11/figure-11.png)](/assets/images/operating-system/11/figure-11.png)
 
-**화살표로 읽기 — 역 페이지 테이블로 주소 변환**
+**역 페이지 테이블로 주소 변환**
 
 ```text
 CPU → 논리 주소 [PID | p | d]
@@ -258,7 +256,7 @@ CPU → 논리 주소 [PID | p | d]
 
 이를 구현하기 위해서는 페이지가 물리 메모리에 적재 되어있는 지를 나타낼 Valid, 페이지가 물리 메모리에 적재되어 있지 않음을 나타낼 Invalid를 표현할 수 있어야 한다. 따라서, 페이지 테이블에 다음 그림과 같은 추가적인 정보가 담겨야 한다.
 
-[![11. Memory Management 1 원문 그림 12](/assets/images/operating-system/11/figure-12.png)](/assets/images/operating-system/11/figure-12.png)
+[![11. Memory Management 1 그림 12](/assets/images/operating-system/11/figure-12.png)](/assets/images/operating-system/11/figure-12.png)
 페이지 테이블을 참고하여 Valid이면 정상적으로 물리 메모리를 참조하면 되고, Invalid이면 페이지가 현재 물리 메모리가 적재되지 않은 Page Fault가 발생한 것이므로, 별도의 Handler를 통해 처리해야 한다.
 
 Page Fault란 프로세스가 페이지를 참조하였을 때, 해당 페이지가 할당 받은 프레임이 없는 경우이다. (즉, 페이지가 물리 메모리에 적재되지 않은 경우이다.) 이런 경우, 새로운 프레임을 할당 받아야 하는데 이는 Page Fault Handler가 담당한다.
@@ -274,7 +272,7 @@ Page Fault Handling
 
 [![Page Fault 처리 순서](/assets/images/operating-system/11/figure-13.png)](/assets/images/operating-system/11/figure-13.png)
 
-**화살표로 읽기 — Page Fault 처리 순서**
+**Page Fault 처리 순서**
 
 ```text
 ① 명령어가 페이지 참조 → Page Table의 Invalid 확인

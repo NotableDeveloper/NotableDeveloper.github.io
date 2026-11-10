@@ -6,23 +6,21 @@ categories: [Operating System]
 tags: [os, file-system]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 <!-- section -->
 
 ## 1. File Concept
 
 파일이란 단순하게 생각해서 Byte들의 집합이라 할 수 있다. 이는 언뜻보면 주소 공간과도 유사해보이지만 다음과 같은 차이가 있다. 둘은 영구적이냐, 영구적이지 않느냐가 가장 큰 차이점이라고도 볼 수 있다.
 
-[![13. File System 원문 그림 1](/assets/images/operating-system/13/figure-01.png)](/assets/images/operating-system/13/figure-01.png)
+[![13. File System 그림 1](/assets/images/operating-system/13/figure-01.png)](/assets/images/operating-system/13/figure-01.png)
 파일이 갖는 속성은 다음과 같다.
 
-[![13. File System 원문 그림 2](/assets/images/operating-system/13/figure-02.png)](/assets/images/operating-system/13/figure-02.png)
+[![13. File System 그림 2](/assets/images/operating-system/13/figure-02.png)](/assets/images/operating-system/13/figure-02.png)
 이 외에도 Time, Date, User Information 등의 메타 데이터가 존재한다.
 
 다음은 파일이 가질 수 있는 (파일로 할 수 있는) 연산이다.
 
-[![13. File System 원문 그림 3](/assets/images/operating-system/13/figure-03.png)](/assets/images/operating-system/13/figure-03.png)
+[![13. File System 그림 3](/assets/images/operating-system/13/figure-03.png)](/assets/images/operating-system/13/figure-03.png)
 File Seek 연산의 current-file-position이란 File을 읽고 쓸 때마다 현재 파일의 어느 위치에 있는 지를가리키는 포인터이다.
 
 파일은 여러 개의 프로세스가 공유하여 사용할 수 있다. 그렇다면 파일도 프로세스마다 관리되어야 할 필요가 있는데, 이 때 사용하는 것이 OFT(Open File Table)이다.
@@ -38,7 +36,7 @@ File System이란 파일과 물리적인 저장장치(Disk) 간의 Mapping을 �
 
 [![디스크와 파티션의 구성](/assets/images/operating-system/13/figure-04.png)](/assets/images/operating-system/13/figure-04.png)
 
-**화살표로 읽기 — 디스크와 파티션의 구성**
+**디스크와 파티션의 구성**
 
 ```text
 Disk 1
@@ -51,7 +49,7 @@ Disk 2 + Disk 3 → Partition C [directory / files]
 
 [![파일 시스템의 계층](/assets/images/operating-system/13/figure-05.png)](/assets/images/operating-system/13/figure-05.png)
 
-**화살표로 읽기 — 파일 시스템의 계층**
+**파일 시스템의 계층**
 
 ```text
 Application Programs
@@ -72,7 +70,7 @@ Devices
 
 [![디렉터리에 파일 시스템 마운트](/assets/images/operating-system/13/figure-06.png)](/assets/images/operating-system/13/figure-06.png)
 
-**화살표로 읽기 — 디렉터리에 파일 시스템 마운트**
+**디렉터리에 파일 시스템 마운트**
 
 ```text
 Disk 2의 파일 시스템 ──mount disk2 /usr/──→ Disk 1의 /usr/
@@ -92,7 +90,7 @@ Disk 2의 파일 시스템 ──mount disk2 /usr/──→ Disk 1의 /usr/
 
 [![디렉터리 엔트리와 파일 연결](/assets/images/operating-system/13/figure-07.png)](/assets/images/operating-system/13/figure-07.png)
 
-**화살표로 읽기 — 디렉터리 엔트리와 파일 연결**
+**디렉터리 엔트리와 파일 연결**
 
 ```text
 Directory
@@ -110,7 +108,7 @@ Directory
 
     [![단일 디렉터리](/assets/images/operating-system/13/figure-08.png)](/assets/images/operating-system/13/figure-08.png)
 
-    **화살표로 읽기 — 단일 디렉터리**
+    **단일 디렉터리**
 
     ```text
     하나의 Directory
@@ -123,7 +121,7 @@ Directory
 
     [![사용자별 디렉터리](/assets/images/operating-system/13/figure-09.png)](/assets/images/operating-system/13/figure-09.png)
 
-    **화살표로 읽기 — 사용자별 디렉터리**
+    **사용자별 디렉터리**
 
     ```text
     Master File Directory
@@ -136,7 +134,7 @@ Directory
 
     [![트리 디렉터리의 경로](/assets/images/operating-system/13/figure-10.png)](/assets/images/operating-system/13/figure-10.png)
 
-    **화살표로 읽기 — 트리 디렉터리의 경로**
+    **트리 디렉터리의 경로**
 
     ```text
     root
@@ -165,7 +163,7 @@ Directory
 
     [![연속 할당된 파일 블록](/assets/images/operating-system/13/figure-11.png)](/assets/images/operating-system/13/figure-11.png)
 
-    **화살표로 읽기 — 연속 할당된 파일 블록**
+    **연속 할당된 파일 블록**
 
     ```text
     Directory [file, start, length]
@@ -181,7 +179,7 @@ Directory
 
     [![연결 리스트의 블록 순서](/assets/images/operating-system/13/figure-12.png)](/assets/images/operating-system/13/figure-12.png)
 
-    **화살표로 읽기 — 연결 리스트의 블록 순서**
+    **연결 리스트의 블록 순서**
 
     ```text
     Directory: jeep [start = 9, end = 25]
@@ -195,7 +193,7 @@ Directory
 
     [![인덱스 블록을 통한 데이터 접근](/assets/images/operating-system/13/figure-13.png)](/assets/images/operating-system/13/figure-13.png)
 
-    **화살표로 읽기 — 인덱스 블록을 통한 데이터 접근**
+    **인덱스 블록을 통한 데이터 접근**
 
     ```text
     Directory: jeep → Index Block 19
@@ -219,7 +217,7 @@ Directory
 
     [![I-node의 직접·간접 참조](/assets/images/operating-system/13/figure-14.png)](/assets/images/operating-system/13/figure-14.png)
 
-    **화살표로 읽기 — I-node의 직접·간접 참조**
+    **I-node의 직접·간접 참조**
 
     ```text
     I-node [mode / owners / timestamps / size / count]
@@ -237,18 +235,18 @@ Directory
 
 - MS-DOS : 파일의 구현이 Linked List Allocation인 MS-DOS에서의 디렉터리 엔트리는 다음과 같다.
 
-    [![13. File System 원문 그림 15](/assets/images/operating-system/13/figure-15.png)](/assets/images/operating-system/13/figure-15.png)
+    [![13. File System 그림 15](/assets/images/operating-system/13/figure-15.png)](/assets/images/operating-system/13/figure-15.png)
     디렉터리 엔트리의 파일 Block의 번호를 통해 실제 파일의 Data Block이 시작되는 블럭을 알 수 있다. Linked List 방식이기 때문에, Data block의 시작 주소와 크기만 알면 전체 파일의 Data들을 접근할 수 있게 된다.
 
 
 - Unix : Unix는 파일의 구현으로 I-node를 사용하기 때문에 디렉터리 엔트리가 다음과 같다.
 
-    [![13. File System 원문 그림 16](/assets/images/operating-system/13/figure-16.png)](/assets/images/operating-system/13/figure-16.png)
+    [![13. File System 그림 16](/assets/images/operating-system/13/figure-16.png)](/assets/images/operating-system/13/figure-16.png)
     해당 엔트리를 보고, I-node에 접근하여 다음과 같이 파일에 대한 정보와 파일 내의 데이터에 접근할 수 있게 된다.
 
     [![경로를 따라 I-node 탐색](/assets/images/operating-system/13/figure-17.png)](/assets/images/operating-system/13/figure-17.png)
 
-    **화살표로 읽기 — 경로를 따라 I-node 탐색**
+    **경로를 따라 I-node 탐색**
 
     ```text
     Root Directory의 usr
@@ -267,5 +265,5 @@ Directory
 
 파일 및 디렉터리는 부적절한 접근을 막을 수 있는 보호 기능이 존재한다. 파일의 접근 권한을 두어접근하려는 프로세스를 막는 것이다. 접근 권한으로는 read, write, execute 로 총 세 가지가 있으며 접근하려는 프로세스도 owner, group, public 의 총 세 가지로 나눈다. 이러면 총 아홉 가지의 조합이가능해지는데, 이를 9 Bit로 표현하여 파일 및 디렉터리의 접근 권한을 다음과 같이 나타낸다.
 
-[![13. File System 원문 그림 18](/assets/images/operating-system/13/figure-18.png)](/assets/images/operating-system/13/figure-18.png)
-[![13. File System 원문 그림 19](/assets/images/operating-system/13/figure-19.png)](/assets/images/operating-system/13/figure-19.png)
+[![13. File System 그림 18](/assets/images/operating-system/13/figure-18.png)](/assets/images/operating-system/13/figure-18.png)
+[![13. File System 그림 19](/assets/images/operating-system/13/figure-19.png)](/assets/images/operating-system/13/figure-19.png)

@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, ipc]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 IPC(Inter Process Communication)이란 프로세스들 간의 데이터 및 정보를 주고 받기 위한 통신 수단을 말한다. 커널은 System call의 형태로 다양한 IPC들을 제공한다. 이를 통해 다수의 프로세스와 협력(Cooperating)하는 것이 가능하다.
 
 <!-- section -->
@@ -102,7 +100,7 @@ if ( shmdt(ptrShm) < 0 ) {
 
 [![커널을 경유하는 메시지 전달](/assets/images/operating-system/07/figure-01.png)](/assets/images/operating-system/07/figure-01.png)
 
-**화살표로 읽기 — 커널을 경유하는 메시지 전달**
+**커널을 경유하는 메시지 전달**
 
 ```text
 Process P ──send──→ Kernel ──receive──→ Process Q
@@ -114,7 +112,7 @@ Process P ←receive─ Kernel ←──send──── Process Q
 
     [![두 파이프로 양방향 통신](/assets/images/operating-system/07/figure-02.png)](/assets/images/operating-system/07/figure-02.png)
 
-    **화살표로 읽기 — 두 파이프로 양방향 통신**
+    **두 파이프로 양방향 통신**
 
     ```text
     Process A ─────Pipe 1────→ Process B
@@ -173,7 +171,7 @@ exit(0);
 
 [![Signal 전달](/assets/images/operating-system/07/figure-03.png)](/assets/images/operating-system/07/figure-03.png)
 
-**화살표로 읽기 — Signal 전달**
+**Signal 전달**
 
 ```text
 Process A ──Signal 전송──→ Kernel ──Signal 전달──→ Process B
@@ -221,7 +219,7 @@ return 0;
 
     [![Message Queue](/assets/images/operating-system/07/figure-04.png)](/assets/images/operating-system/07/figure-04.png)
 
-    **화살표로 읽기 — Message Queue**
+    **Message Queue**
 
     ```text
     Process A ──메시지 삽입──→ [Message Queue]
@@ -285,7 +283,7 @@ return 0;
 
     [![네트워크를 통한 Socket 통신](/assets/images/operating-system/07/figure-05.png)](/assets/images/operating-system/07/figure-05.png)
 
-    **화살표로 읽기 — 네트워크를 통한 Socket 통신**
+    **네트워크를 통한 Socket 통신**
 
     ```text
     Machine 1 (local)             Machine 2 (remote)

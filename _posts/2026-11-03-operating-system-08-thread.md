@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, thread]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 <!-- section -->
 
 ## 1. Thread 개념
@@ -16,7 +14,7 @@ tags: [os, thread]
 
 쓰레드는 프로세스와 같은 하나의 실행 단위로, 프로세스 내에서의 실행 흐름이므로 프로세스보다는작은 실행 흐름이라 할 수 있다. 지금껏 살펴본 프로세스들은 다수 개가 서로 협력하는 형태로 쓰이는 경우를 보았는데, 이를 쓰레드로 처리하면 IPC, Context-Switching과 같은 비용 없이도 협력 가능한 여러 개의 실행 흐름을 만들어 낼 수 있는 것이다.
 
-[![08. Thread 원문 그림 1](/assets/images/operating-system/08/figure-01.png)](/assets/images/operating-system/08/figure-01.png)
+[![08. Thread 그림 1](/assets/images/operating-system/08/figure-01.png)](/assets/images/operating-system/08/figure-01.png)
 위 그래프는 CPU의 수에 따라 쓰레드가 많아질수록 처리량이 얼마나 높아지는 지를 보여준다. 그래프를 보면 쓰레드의 수가 증가할 수록 처리량이 특정 구간까지는 높게 올라가다가 내려가는 결과를 보이는데, 이는 Thread Switching 비용이 증가함에 따른 결과이다. 즉, CPU의 수가 많다면 하나의 프로세스에서 적당한 쓰레드를 병렬적으로 실행하는 것이 좋은 효율을 보인다는 의미가 된다.
 
 Thread는 하나의 프로세스 안에서 동작하므로, 소속된 프로세스의 Code 영역과 Data 영역은 쓰레드끼리 공유되며, (Stack과 Heap은 공유되지 않는다.) 쓰레드들은 하나의 프로세스 안의 메모리를 사용하는 것이므로, 쓰레드 간의 Switching 비용은 프로세스의 Switching에 비하면 적은 편이다.
@@ -34,7 +32,7 @@ Thread는 하나의 프로세스 안에서 동작하므로, 소속된 프로세�
 
 [![단일 쓰레드와 다중 쓰레드의 구성](/assets/images/operating-system/08/figure-02.png)](/assets/images/operating-system/08/figure-02.png)
 
-**화살표로 읽기 — 단일 쓰레드와 다중 쓰레드의 구성**
+**단일 쓰레드와 다중 쓰레드의 구성**
 
 ```text
 Single-threaded Process
@@ -80,7 +78,7 @@ Multithreaded Process
 
     [![Many To One 매핑](/assets/images/operating-system/08/figure-03.png)](/assets/images/operating-system/08/figure-03.png)
 
-    **화살표로 읽기 — Many To One 매핑**
+    **Many To One 매핑**
 
     ```text
     User Thread 1 ─┐
@@ -92,7 +90,7 @@ Multithreaded Process
 
     [![One To One 매핑](/assets/images/operating-system/08/figure-04.png)](/assets/images/operating-system/08/figure-04.png)
 
-    **화살표로 읽기 — One To One 매핑**
+    **One To One 매핑**
 
     ```text
     User Thread 1 → Kernel Thread 1
@@ -104,7 +102,7 @@ Multithreaded Process
 
     [![Many To Many 매핑](/assets/images/operating-system/08/figure-05.png)](/assets/images/operating-system/08/figure-05.png)
 
-    **화살표로 읽기 — Many To Many 매핑**
+    **Many To Many 매핑**
 
     ```text
     [User Thread 1 / 2 / 3 / 4]
@@ -140,7 +138,7 @@ Multi-Thread 환경에서 하나의 프로세스 안에서 동작하는 여러 �
 
 [![자식 프로세스 생성과 프로그램 교체](/assets/images/operating-system/08/figure-06.png)](/assets/images/operating-system/08/figure-06.png)
 
-**화살표로 읽기 — 자식 프로세스 생성과 프로그램 교체**
+**자식 프로세스 생성과 프로그램 교체**
 
 ```text
 Parent ──fork()──┬→ Parent 계속 실행

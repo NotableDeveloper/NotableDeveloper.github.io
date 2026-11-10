@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, overview]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 운영체제(Operating system)는 다음과 같은 두 가지 사항을 제공하는 장치이다.
 
 1. 사용자가 하드웨어를 쉽게 사용할 수 있게 해주는 추상화(Abstraction)를 제공하는 장치이다.
@@ -17,7 +15,7 @@ tags: [os, overview]
 
 [![컴파일 과정과 추상화 수준](/assets/images/operating-system/01/figure-01.png)](/assets/images/operating-system/01/figure-01.png)
 
-**화살표로 읽기 — 컴파일 과정과 추상화 수준**
+**컴파일 과정과 추상화 수준**
 
 ```text
 High-level Language Program

@@ -6,15 +6,13 @@ categories: [Operating System]
 tags: [os, kernel, system-call]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 운영체제는 규모가 매우 크고 복잡한 소프트웨어이다. 그러므로 개발, 수정 및 디버깅, 유지 보수, 확장 등을 고려하여 신중하게 설계되어야 한다. 운영체제의 설계 원칙은 'Policy', 'Mechanism'을 중점적으로 분리하는 것이다. Policy는 '무엇'이 되게 할 지에 대한 정책이고, Mechanism은 무엇을 '어떻게' 구현할 것인지에 대한 동작 방식을 말한다.
 
 이러한 설계 원칙을 준수할 수 있는 방법으로는 'Layering'이 존재한다. 각 모듈을 계층으로 나누어 구현하고, 통신하도록 하는 것이다. 각 모듈은 정의된 정책에 따라 구현되고, 모듈 간의 계층을 두어 위와 아래로 인접한 Layer끼리 통신하도록 하는 것이다.  즉, 다음 그림과 같이 하나의 레이어가 위, 아래로 인접한 레이어를 건너뛰어 통신하는 것을 허용하지 않는다.
 
 [![인접 계층 사이의 통신](/assets/images/operating-system/03/figure-01.png)](/assets/images/operating-system/03/figure-01.png)
 
-**화살표로 읽기 — 인접 계층 사이의 통신**
+**인접 계층 사이의 통신**
 
 ```text
 [Layer A]
@@ -33,7 +31,7 @@ Layering의 단점으로는 Overhead가 발생한다는 점이 있다. 구체적
 
 [![커널 기능과 하드웨어 인터페이스](/assets/images/operating-system/03/figure-02.png)](/assets/images/operating-system/03/figure-02.png)
 
-**화살표로 읽기 — 커널 기능과 하드웨어 인터페이스**
+**커널 기능과 하드웨어 인터페이스**
 
 ```text
 Kernel 기능
@@ -57,7 +55,7 @@ Kernel mode는 모든 권한을 가진 실행 모드로, 오직 Kernel mode만�
 
 [![시스템 콜 요청과 반환](/assets/images/operating-system/03/figure-03.png)](/assets/images/operating-system/03/figure-03.png)
 
-**화살표로 읽기 — 시스템 콜 요청과 반환**
+**시스템 콜 요청과 반환**
 
 ```text
 User application
@@ -75,7 +73,7 @@ User application ← System Call Interface
 
 [![매개인자 테이블의 주소 전달](/assets/images/operating-system/03/figure-04.png)](/assets/images/operating-system/03/figure-04.png)
 
-**화살표로 읽기 — 매개인자 테이블의 주소 전달**
+**매개인자 테이블의 주소 전달**
 
 ```text
 User program: 매개인자 테이블 X
@@ -88,14 +86,14 @@ User application에서 시스템 콜이 호출될 때, 매개인자가 필요로
 
 다음은 많이 사용되는 시스템 콜들을 정리해둔 것이다.
 
-[![03. Kernel Structure 원문 그림 5](/assets/images/operating-system/03/figure-05.png)](/assets/images/operating-system/03/figure-05.png)
+[![03. Kernel Structure 그림 5](/assets/images/operating-system/03/figure-05.png)](/assets/images/operating-system/03/figure-05.png)
 한편, 커널은 구현 방법에 따라 다음과 같은 세 가지 방식이 존재한다.
 
 - Monolithic Kernel
 
     [![Monolithic Kernel 구조](/assets/images/operating-system/03/figure-06.png)](/assets/images/operating-system/03/figure-06.png)
 
-    **화살표로 읽기 — Monolithic Kernel 구조**
+    **Monolithic Kernel 구조**
 
     ```text
     User area:   [App]        [App]        [App]
@@ -117,7 +115,7 @@ User application에서 시스템 콜이 호출될 때, 매개인자가 필요로
 
     [![Micro Kernel 구조](/assets/images/operating-system/03/figure-07.png)](/assets/images/operating-system/03/figure-07.png)
 
-    **화살표로 읽기 — Micro Kernel 구조**
+    **Micro Kernel 구조**
 
     ```text
     Applications
@@ -137,7 +135,7 @@ User application에서 시스템 콜이 호출될 때, 매개인자가 필요로
 
     [![Hypervisor 구조](/assets/images/operating-system/03/figure-08.png)](/assets/images/operating-system/03/figure-08.png)
 
-    **화살표로 읽기 — Hypervisor 구조**
+    **Hypervisor 구조**
 
     ```text
     [App]             [App]             [App]

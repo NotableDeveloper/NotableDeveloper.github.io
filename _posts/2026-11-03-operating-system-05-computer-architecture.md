@@ -6,15 +6,13 @@ categories: [Operating System]
 tags: [os, computer-architecture, interrupt]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 <!-- section -->
 
 ## 1. Bus
 
 [![단일 시스템 버스 연결](/assets/images/operating-system/05/figure-01.png)](/assets/images/operating-system/05/figure-01.png)
 
-**화살표로 읽기 — 단일 시스템 버스 연결**
+**단일 시스템 버스 연결**
 
 ```text
 CPU ↔ System Bus ↔ Memory
@@ -29,7 +27,7 @@ CPU와 메모리 사이의 속도 격차뿐만 아니라 메모리와 Disk, Disk
 
 [![계층형 버스 연결](/assets/images/operating-system/05/figure-02.png)](/assets/images/operating-system/05/figure-02.png)
 
-**화살표로 읽기 — 계층형 버스 연결**
+**계층형 버스 연결**
 
 ```text
 CPU ↔ System Bus ↔ Memory
@@ -70,7 +68,7 @@ CPU ↔ System Bus ↔ Memory
 
 [![하드웨어 인터럽트 처리와 복귀](/assets/images/operating-system/05/figure-03.png)](/assets/images/operating-system/05/figure-03.png)
 
-**화살표로 읽기 — 하드웨어 인터럽트 처리와 복귀**
+**하드웨어 인터럽트 처리와 복귀**
 
 ```text
 프로그램 실행
@@ -89,7 +87,7 @@ Trap Handler에 의해 처리된다. Trap Handler는 발생한 트랩에 대하�
 
 [![시스템 콜에 따른 트랩 처리](/assets/images/operating-system/05/figure-04.png)](/assets/images/operating-system/05/figure-04.png)
 
-**화살표로 읽기 — 시스템 콜에 따른 트랩 처리**
+**시스템 콜에 따른 트랩 처리**
 
 ```text
 User space:   App 실행 ──System call──┐
@@ -126,7 +124,7 @@ Polling의 경우, 모든 I/O 연산은 CPU에 의해 진행된다. CPU가 레�
 
 [![DMA 읽기 — Disk에서 Memory로](/assets/images/operating-system/05/figure-05.png)](/assets/images/operating-system/05/figure-05.png)
 
-**화살표로 읽기 — DMA 읽기 — Disk에서 Memory로**
+**DMA 읽기 — Disk에서 Memory로**
 
 ```text
 ① CPU → DMA Controller: READ 모드, buffer 주소 X, 크기 C 설정
@@ -139,7 +137,7 @@ Polling의 경우, 모든 I/O 연산은 CPU에 의해 진행된다. CPU가 레�
 
 [![DMA 쓰기 — Memory에서 Disk로](/assets/images/operating-system/05/figure-06.png)](/assets/images/operating-system/05/figure-06.png)
 
-**화살표로 읽기 — DMA 쓰기 — Memory에서 Disk로**
+**DMA 쓰기 — Memory에서 Disk로**
 
 ```text
 ① CPU → DMA Controller: WRITE 모드, buffer 주소 X, 크기 C 설정

@@ -6,8 +6,6 @@ categories: [Operating System]
 tags: [os, synchronization, semaphore]
 ---
 
-> 본문과 예제는 원문을 보존했다. 그림은 누르면 원본 크기로 볼 수 있으며, **화살표로 읽기**는 구조와 흐름을 풀어 쓴 보충 도식이다.
-
 앞선 내용은 동기화를 어떻게 구현하는 지에 대한 내용이었다. 이 글에서는 동기화의 고전적인 세 가지 문제에 대해 살펴본다.
 
 <!-- section -->
@@ -20,7 +18,7 @@ N개의 Item을 삽입할 수 있는 Buffer에 여러 생산자와 여러 소비
 
 [![생산자와 소비자의 버퍼 접근](/assets/images/operating-system/10/figure-01.png)](/assets/images/operating-system/10/figure-01.png)
 
-**화살표로 읽기 — 생산자와 소비자의 버퍼 접근**
+**생산자와 소비자의 버퍼 접근**
 
 ```text
 Producer → P(empty) → P(mutex) → Buffer에 Item 추가
@@ -98,7 +96,7 @@ Reader 프로세스는 여러 프로세스가 동시에 읽어도 문제 없으�
 
 [![Reader와 Writer의 접근 조건](/assets/images/operating-system/10/figure-02.png)](/assets/images/operating-system/10/figure-02.png)
 
-**화살표로 읽기 — Reader와 Writer의 접근 조건**
+**Reader와 Writer의 접근 조건**
 
 ```text
 읽는 중:   Shared Data ──read──→ Reader 1 / 2 / 3 / 4
@@ -161,7 +159,7 @@ function readers(){
 
 [![철학자의 젓가락 요청](/assets/images/operating-system/10/figure-03.png)](/assets/images/operating-system/10/figure-03.png)
 
-**화살표로 읽기 — 철학자의 젓가락 요청**
+**철학자의 젓가락 요청**
 
 ```text
 P0 → C0, C1       P1 → C1, C2       P2 → C2, C3
@@ -275,19 +273,19 @@ function test(i){
 
 - take_chopsticks() :
 
-    [![10. 동기화 2 원문 그림 4](/assets/images/operating-system/10/figure-04.png)](/assets/images/operating-system/10/figure-04.png)
+    [![10. 동기화 2 그림 4](/assets/images/operating-system/10/figure-04.png)](/assets/images/operating-system/10/figure-04.png)
     test() 함수 안에서 검사하는 LEFT와 RIGHT의 상태가 EATING이 아니어야 젓가락을 얻는다.
 
     test()를 만족하면, signal(self[i])에 의해 self[i]의 값은 1이 되므로, wait(self[i])에서 block되지 않고 식사를 진행할 수 있게 된다. (이 때, self[i]의 초기 값은 0 이다.)
 
 - put_chopsticks() :
 
-    [![10. 동기화 2 원문 그림 5](/assets/images/operating-system/10/figure-05.png)](/assets/images/operating-system/10/figure-05.png)
+    [![10. 동기화 2 그림 5](/assets/images/operating-system/10/figure-05.png)](/assets/images/operating-system/10/figure-05.png)
     식사를 마치면, 좌 우 철학자의 test() 함수를 실행한다. 이 때, 철학자 L과 R은 i에 의해 test_chopstick()에서 wait()함수에 의해 대기 중이다.
 
     [![이웃 철학자의 상태 확인](/assets/images/operating-system/10/figure-06.png)](/assets/images/operating-system/10/figure-06.png)
 
-    **화살표로 읽기 — 이웃 철학자의 상태 확인**
+    **이웃 철학자의 상태 확인**
 
     ```text
     LL — L — i — R — RR    (원형 식탁의 이웃 관계를 펼친 것)
