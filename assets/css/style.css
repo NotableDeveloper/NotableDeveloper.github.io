@@ -54,6 +54,8 @@ h1, h2, h3 { margin: 0; line-height: 1.18; letter-spacing: -.05em; }
 .post-meta { margin: 0; color: var(--muted); font: .72rem/1.5 "DM Mono", monospace; }
 .site-footer { display: flex; justify-content: space-between; padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font: .7rem "DM Mono", monospace; }
 .page-content, .post-content { max-width: 720px; padding: 110px 0 140px; }
+.post-content { min-width: 0; }
+.post-body img { display: block; max-width: 100%; height: auto; }
 .page-content h1, .post-content h1 { margin-bottom: 48px; font-size: clamp(2.6rem, 6vw, 4.5rem); }
 .page-content h2, .post-body h2 { margin: 48px 0 14px; font-size: 1.55rem; }
 .page-content p, .page-content li, .post-body { color: #3d4b46; }
