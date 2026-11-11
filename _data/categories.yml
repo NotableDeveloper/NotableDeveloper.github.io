@@ -5,5 +5,8 @@
       url: /categories/asterisk/practice/
 - title: Docker
   url: /categories/docker/
-- title: Operating System
-  url: /categories/operating-system/
+- title: Computer Science
+  url: /categories/computer-science/
+  children:
+    - title: Operating System
+      url: /categories/operating-system/
