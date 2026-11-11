@@ -2,7 +2,8 @@
 title: "06. CPU Scheduling"
 description: "CPU 스케줄링의 목표, 평가 기준과 대표 알고리즘을 정리한다."
 date: 2026-11-03 23:07:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-06-cpu-scheduling/
 tags: [os, cpu-scheduling]
 ---
 

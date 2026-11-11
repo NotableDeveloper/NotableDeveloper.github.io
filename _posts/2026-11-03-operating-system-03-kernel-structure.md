@@ -2,7 +2,8 @@
 title: "03. Kernel Structure"
 description: "운영체제의 계층 구조와 Policy, Mechanism, 커널 모드 및 시스템 콜을 정리한다."
 date: 2026-11-03 23:10:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-03-kernel-structure/
 tags: [os, kernel, system-call]
 ---
 

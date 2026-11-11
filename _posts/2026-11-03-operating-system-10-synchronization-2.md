@@ -2,7 +2,8 @@
 title: "10. 동기화 2"
 description: "유한 버퍼, 독자-작성자, 식사하는 철학자 문제와 세마포어 풀이를 정리한다."
 date: 2026-11-03 23:03:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-10-synchronization-2/
 tags: [os, synchronization, semaphore]
 ---
 

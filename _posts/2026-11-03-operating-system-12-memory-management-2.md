@@ -2,7 +2,8 @@
 title: "12. Memory Management 2"
 description: "Page Replacement, Swapping과 페이지 교체 알고리즘을 정리한다."
 date: 2026-11-03 23:01:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-12-memory-management-2/
 tags: [os, memory-management, page-replacement]
 ---
 

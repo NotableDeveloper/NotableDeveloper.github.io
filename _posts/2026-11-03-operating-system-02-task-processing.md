@@ -2,7 +2,8 @@
 title: "02. Task Processing의 발전 과정"
 description: "CPU와 입출력 장치의 속도 차이를 해결하기 위해 작업 처리 방식이 발전한 과정을 정리한다."
 date: 2026-11-03 23:11:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-02-task-processing/
 tags: [os, task-processing]
 ---
 

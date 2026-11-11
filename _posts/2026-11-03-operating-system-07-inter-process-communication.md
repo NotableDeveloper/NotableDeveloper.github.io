@@ -2,7 +2,8 @@
 title: "07. Inter Process Communication"
 description: "프로세스 간 통신의 공유 메모리와 메시지 전달 방식, 대표 IPC 수단을 살펴본다."
 date: 2026-11-03 23:06:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-07-inter-process-communication/
 tags: [os, ipc]
 ---
 

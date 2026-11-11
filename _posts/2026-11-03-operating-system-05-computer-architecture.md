@@ -2,7 +2,8 @@
 title: "05. Computer Architecture"
 description: "버스, 인터럽트, 트랩, 입출력 컨트롤러와 DMA의 동작을 정리한다."
 date: 2026-11-03 23:08:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-05-computer-architecture/
 tags: [os, computer-architecture, interrupt]
 ---
 

@@ -11,5 +11,7 @@
     - title: Operating System
       url: /categories/operating-system/
       children:
+        - title: Theory
+          url: /categories/operating-system/theory/
         - title: Kernel
           url: /categories/operating-system/kernel/

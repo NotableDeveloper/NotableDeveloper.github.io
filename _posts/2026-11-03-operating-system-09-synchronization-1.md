@@ -2,7 +2,8 @@
 title: "09. 동기화 1"
 description: "Race Condition과 Critical Section 문제, 상호 배제 해결 방법을 정리한다."
 date: 2026-11-03 23:04:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-09-synchronization-1/
 tags: [os, synchronization]
 ---
 

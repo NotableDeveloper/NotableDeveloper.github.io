@@ -2,7 +2,8 @@
 title: "08. Thread"
 description: "프로세스 내 스레드 구조와 사용자·커널 스레드, 매핑 모델 및 고려 사항을 정리한다."
 date: 2026-11-03 23:05:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-08-thread/
 tags: [os, thread]
 ---
 

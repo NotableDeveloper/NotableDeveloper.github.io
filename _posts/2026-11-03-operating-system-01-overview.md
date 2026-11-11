@@ -2,7 +2,8 @@
 title: "01. 개요 (운영체제란 무엇인가?)"
 description: "운영체제가 제공하는 추상화와 컴퓨팅 자원 관리 정책을 살펴본다."
 date: 2026-11-03 23:12:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-01-overview/
 tags: [os, overview]
 ---
 

@@ -2,7 +2,8 @@
 title: "04. Process"
 description: "소스 코드가 프로세스로 만들어지는 과정과 프로세스 상태를 설명한다."
 date: 2026-11-03 23:09:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-04-process/
 tags: [os, process]
 ---
 

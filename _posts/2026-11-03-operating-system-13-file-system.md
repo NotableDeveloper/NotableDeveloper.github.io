@@ -2,7 +2,8 @@
 title: "13. File System"
 description: "파일과 디렉터리, 파일 시스템 계층, 디스크 할당 방식 및 접근 권한을 정리한다."
 date: 2026-11-03 23:00:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-13-file-system/
 tags: [os, file-system]
 ---
 

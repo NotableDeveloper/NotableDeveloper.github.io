@@ -2,7 +2,8 @@
 title: "11. Memory Management 1"
 description: "주소 공간과 주소 바인딩, 페이지와 프레임, 페이지 테이블의 역할을 설명한다."
 date: 2026-11-03 23:02:00 +0900
-categories: [Operating System]
+categories: [Operating System, Theory]
+permalink: /operating system/2026/11/03/operating-system-11-memory-management-1/
 tags: [os, memory-management, paging]
 ---
 
