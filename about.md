@@ -1,18 +1,10 @@
 ---
-layout: page
+layout: default
 title: About
 permalink: /about/
 ---
 
-## 문제의 맥락부터 기록합니다
-
-이 블로그는 기술을 단순히 소개하는 곳이 아니라, 실제 문제를 어떻게 관찰하고 원인을 좁혀 갔는지 기록하는 공간입니다.
-
-주로 다음 주제를 다룹니다.
-
-- 백엔드 애플리케이션과 데이터베이스
-- Linux, 네트워크, SIP/전화 시스템
-- 테스트와 자동화
-- 개발 과정에서의 의사결정과 회고
-
-프로필과 링크는 `_config.yml`의 `author` 설정에서 수정할 수 있습니다.
+<article class="page-content" lang="en">
+  <p>Notes on AICC, IPCC, Computer Science, and Java.<br>
+  Exploring computer virtualization with virtual machines (VMs) and Docker.</p>
+</article>
