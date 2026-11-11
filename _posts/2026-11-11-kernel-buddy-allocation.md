@@ -124,15 +124,3 @@ buddy를 &lt;page number&gt; + 2^order로 찾는다고 되어있다. 이를 통�
 ### 5. Fragmentation
 
 Dynamic allocation과 비교해본다면, buddy system은 external fragmentation이 거의 없다. 하지만 Internal fragmentation은 발생 가능하다. internal fragmentation이란, 큰 block이 작은 request를 수행하기 위해 할당 됐을 때 공간이 낭비되는 현상이다. 이를 피하기 위해서 페이지들을 작은 메모리 block들로 나누기 위해 slab allocator를 사용한다.
-
-[https://www.kernel.org/doc/gorman/html/understand/understand009.html](https://www.kernel.org/doc/gorman/html/understand/understand009.html)
-
-[https://www.win.tue.nl/~aeb/linux/lk/lk-9.html](https://www.win.tue.nl/~aeb/linux/lk/lk-9.html)
-
-[https://wogh8732.tistory.com/402](https://wogh8732.tistory.com/402)
-
-[https://woodz.tistory.com/57](https://woodz.tistory.com/57)
-
-[https://en.wikipedia.org/wiki/Buddy_memory_allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)
-
-Image: [https://woodz.tistory.com/58?category=356363](https://woodz.tistory.com/58?category=356363), [https://www.kernel.org/doc/gorman/html/understand/understand009.html](https://www.kernel.org/doc/gorman/html/understand/understand009.html),  [https://en.wikipedia.org/wiki/Buddy_memory_allocation](https://en.wikipedia.org/wiki/Buddy_memory_allocation)

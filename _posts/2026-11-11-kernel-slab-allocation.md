@@ -54,17 +54,3 @@ Slab과 cache에 대해 정리하자면 다음과 같다.
 - Full: Slab 상의 모든 object가 사용되는 상태이다.
 
 처음엔 시스템은 각각의 slab을 empty 상태로 표기한다. 만약 프로세스가 새로운 kernel object를 호출한다면, 시스템은 해당 object type의 cache 안의 partial slab에서 free 공간의 위치를 찾는다. 만약 그러한 위치가 존재하지 않는다면, 시스템은 연속된 물리 page들로부터 새로운 slab을 할당하고, cache에 부여한다. 새로운 object는 해당 slab에 할당되고, 해당 위치는 partial로 표기된다. 할당 과정은 시스템이 사전에 slab으로부터 object들을 할당하기에 빠르게 이루어진다.
-
-Ref
-
-[https://goodtogreate.tistory.com/8](https://goodtogreate.tistory.com/8)
-
-[https://hyeyoo.com/124](https://hyeyoo.com/124)
-
-[https://wogh8732.tistory.com/418](https://wogh8732.tistory.com/418)
-
-[https://en.wikipedia.org/wiki/Slab_allocation](https://en.wikipedia.org/wiki/Slab_allocation)
-
-[https://www.geeksforgeeks.org/operating-system-allocating-kernel-memory-buddy-system-slab-system/](https://www.geeksforgeeks.org/operating-system-allocating-kernel-memory-buddy-system-slab-system/)
-
-[https://www.kernel.org/doc/gorman/html/understand/understand011.html](https://www.kernel.org/doc/gorman/html/understand/understand011.html)
