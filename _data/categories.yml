@@ -15,3 +15,8 @@
           url: /categories/operating-system/theory/
         - title: Kernel
           url: /categories/operating-system/kernel/
+    - title: Network
+      url: /categories/network/
+      children:
+        - title: Theory
+          url: /categories/network/theory/
