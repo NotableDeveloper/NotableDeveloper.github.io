@@ -1,5 +1,5 @@
 ---
-title: "[2계층] Ether Channel"
+title: "[Solutions] Ether Channel"
 description: "Ether Channel에 관한 네트워크 이론."
 date: 2026-11-13 08:05:59 +0900
 categories: [Network, Theory]
