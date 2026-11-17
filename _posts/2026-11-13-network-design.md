@@ -1,5 +1,5 @@
 ---
-title: "네트워크 정의 및 설계"
+title: "[기본개념] 네트워크 정의 및 설계"
 description: "네트워크 정의 및 설계에 관한 네트워크 이론."
 date: 2026-11-13 08:05:59 +0900
 categories: [Network, Theory]

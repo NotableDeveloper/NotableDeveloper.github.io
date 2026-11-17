@@ -1,5 +1,5 @@
 ---
-title: "Routing Protocol - IGP, BGP"
+title: "[3계층] Routing Protocol - IGP, BGP"
 description: "Routing Protocol - IGP와 BGP에 관한 네트워크 이론."
 date: 2026-11-15 00:00:00 +0900
 categories: [Network, Theory]
