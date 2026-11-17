@@ -1,86 +1,176 @@
 ---
-title: "라우터 연결 및 터미널 다루기"
+title: '라우터 연결 및 터미널 다루기'
 description: "Cisco Packet Tracer에서 라우터와 스위치를 연결하고 콘솔 터미널과 라우터 명령 모드를 다루는 실습."
 date: 2026-11-17 23:00:00 +0900
 categories: [Network, Practice]
 tags: [network, packet-tracer, router, cisco]
 ---
 
-이 글의 실습은 Cisco Packet Tracer로 진행한다. Router는 2621, Switch는 2960을 사용한다.
+드래그 앤 드랍으로 아래와 같이 장비와 케이블을 배치하여 실습 환경을 구축해보자. (Rotuer는 2621, Switch는 2960 사용한다.)
 
-## 2621 Router 장비 구조
+![Untitled](/assets/images/network/practice/router-terminal/figure-01.webp)
 
-- 콘솔 포트: 초당 9600bps의 데이터를 처리한다.
-- 전원
-- Fast Ethernet: 초당 100Mbps의 데이터를 처리한다.
-- Network module: 이번 실습에서는 NM-2FE2W 모듈을 사용한다.
-- Web Interface Card
+- 2621 Router 장비 구조
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-02.webp)
+    
+    - 콘솔 포트
+        
+        초당 9600bps의 데이터를 처리함 (매우 느린 편, 명령어 입력 시에만 사용)
+        
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-03.webp)
+    
+    - 전원
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-04.webp)
+    
+    - Fast Ethernet
+        
+        초당 100mbps의 데이터를 처리함
+        
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-05.webp)
+    
+    - Network module
+        
+        이번 실습에서는 NM-2FE2W 모듈을 사용한다.
+        
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-06.webp)
+    
+    - Web Interface Card
+    
 
-## 케이블 사용 유의사항
+- 케이블 사용 유의사항
+    
+    아래의 케이블은 **서로 다른 장치를 연결**할 때 사용하는 구리 케이블이다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-07.webp)
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-08.webp)
+    
+    아래 케이블은 같은 장치를 연결할 때(= Router 간의 연결, Switch 간의 연결) 사용하는 구리 케이블이다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-09.webp)
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-10.webp)
+    
+    기기의 콘솔 연결 아래의 케이블로 한다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-11.webp)
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-12.webp)
+    
 
-서로 다른 장치를 연결할 때와 같은 장치를 연결할 때 사용하는 구리 케이블이 다르다. 기기의 콘솔 연결은 콘솔 케이블로 한다.
+- Router의 Link pulse 켜기
+    
+    잘 살펴보면 Router와 연결되는 장비는 빨간 불이 나오고, 이 외에 장비들은 모두 초록 불이 나오는 것을 볼 수 있다. 
+    
+    빨간 불인 경우에는 Link Pulse(현재 장비의 Port가 켜져 있는 지를 나타내는 신호)가 꺼져 있다는 뜻이고, 초록 불이면 신호가 켜져 있다는 뜻이다. 
+    
+    Router는 기본적으로 신호가 꺼져있는 상태이므로, 콘솔에 연결하여 신호를 켜줄 필요가 있다.
+    
+    아래와 같이 4/0, 2/0, 3/0 포트에 Link pulse가 Off 되어 있는 것을 On으로 바꾸어보자.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-13.webp)
+    
+    먼저 Console과 연결하고 아래와 같이 인터페이스 컨피규레이션 모드로 진입한다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-14.webp)
+    
+    이후, no shutdown 명령을 입력해준다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-15.webp)
+    
+    그 결과로 4/0 포트에 초록 불이 들어온 것을 확인할 수 있다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-16.webp)
+    
+    또, 아래와 같이 라우터 간의 연결 후에 On을 시키려면 각각의 라우터 방향에서 no shutdown을 실행해야 한다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-17.webp)
+    
 
-## Router의 Link pulse 켜기
+- 터미널 접근
+    
+    콘솔에서 명령을 입력하기 위해서는 Laptop을 좌클릭하고, 아래와 같이 Terminal을 클릭하면 된다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-18.webp)
+    
+    라우터에 접근하는 방식은 크게 두 가지가 존재한다.
+    
+    1. Console Access 
+        
+        콘솔 케이블과 콘솔 포트에 연결하는 방식. (위 이미지처럼 터미널로 접근하는 방식이 Console Access이다.)
+        
+    
+    1. Telnet Access, Remote Access
+        
+        Telnet packet(= 7계층 프로토콜)을 이동하여 네트워크에 접근하는 방식 (실제 패킷 이동)
+        
+        Console에서 장비의 이름을 입력하면 Telnet Access를 수행하는 것이 된다.
+        
+        (Console에서 오탈자가 발생하여 Telnet Access가 발생했을 경우, Ctrl + Shift + 6을 눌러서 탈출할 수 있다.)
+        
+        - Telnet Access에 비밀번호 설정하기
+            
+            다음과 같이 설정한다.
+            
+            ![Untitled](/assets/images/network/practice/router-terminal/figure-19.webp)
+            
+            이 때, vty는 가상의 인터페이스를 생성하는 것이고 0 4 라는 옵션은 0번부터 4번까지 총 5명의 유저를 허용하겠다는 의미이다.
+            
+            이후, 비밀번호를 설정한 네트워크 접근 시에 비밀번호를 묻게 된다.
+            
+            ![Untitled](/assets/images/network/practice/router-terminal/figure-20.webp)
+            
+        
+    
 
-Router와 연결되는 장비에 빨간 불이 나오는 것은 Link Pulse가 꺼져 있다는 뜻이다. Router는 기본적으로 신호가 꺼져 있으므로 콘솔에서 인터페이스 설정 모드로 진입한 뒤 `no shutdown`을 입력한다. 4/0, 2/0, 3/0 포트의 상태를 켜고 라우터 간 연결에서는 양쪽 라우터에서 각각 실행한다.
+- Console에서의 명령어 입력 모드
+    
+    Console에는 아래와 같은 네 가지 명령어 입력 모드가 존재한다.
+    
+    - 유저 모드 Router>
+        
+        Level 1 명령어 모드라고도 한다.
+        
+        간단한 조사를 위한 명령 모드이다.
+        
+    - 프리빌리지 모드 Router#
+        
+        Level 15 명령어 모드라고도 한다.
+        
+        자세한 조사를 위한 명령 모드이다.
+        
+        유저모드에서 “**enable**”을 입력하여 진입할 수 있다.
+        
+    - 글로벌 컨피규레이션 모드 Router(config)#
+        
+        인터페이스와 관련없는 설정 명령 모드이다. 
+        
+        프리빌리지 모드에서 “**configure terminal**”을 입력하여 진입할 수 있다.
+        
+    
+    - 인터페이스 컨피규레이션 모드 Router(config-if)#
+        
+        인터페이스와 관련있는 설정 명령 모드이다.
+        
+    
+    또, 각 명령 모드 탈출은 “**exit**, **end**”를 입력하면 된다.
+    
+    기타 상세한 명령어 내용은 다음과 같다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-21.webp)
+    
+    또, 필요에 따라 Level 15 명령어 모드의 진입에 비밀번호를 걸어야 할 수도 있다. 이는 다음과 같이 진행한다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-22.webp)
+    
 
-## 터미널 접근
-
-Laptop을 클릭하고 Terminal을 선택하면 콘솔에서 명령을 입력할 수 있다. Console Access는 콘솔 케이블과 콘솔 포트로 접근하고, Telnet Access는 Telnet 패킷으로 네트워크에 접근한다. 오탈자로 Telnet Access가 발생하면 `Ctrl + Shift + 6`으로 탈출할 수 있다. `vty 0 4`는 0번부터 4번까지 총 5명의 사용자를 허용하는 가상 인터페이스다.
-
-## Console의 명령어 입력 모드
-
-- 유저 모드 `Router>`: Level 1 명령어 모드다.
-- 프리빌리지 모드 `Router#`: Level 15 명령어 모드이며 `enable`로 진입한다.
-- 글로벌 컨피규레이션 모드 `Router(config)#`: `configure terminal`로 진입한다.
-- 인터페이스 컨피규레이션 모드 `Router(config-if)#`: 인터페이스 설정을 수행한다.
-
-각 모드에서 `exit` 또는 `end`로 빠져나온다. 라우터 이름은 글로벌 컨피규레이션 모드에서 hostname 명령으로 변경한다.
-
-## 실습 화면
-
-![라우터 연결 및 터미널 실습 화면 01](/assets/images/network/practice/router-terminal/figure-01.webp)
-
-![라우터 연결 및 터미널 실습 화면 02](/assets/images/network/practice/router-terminal/figure-02.webp)
-
-![라우터 연결 및 터미널 실습 화면 03](/assets/images/network/practice/router-terminal/figure-03.webp)
-
-![라우터 연결 및 터미널 실습 화면 04](/assets/images/network/practice/router-terminal/figure-04.webp)
-
-![라우터 연결 및 터미널 실습 화면 05](/assets/images/network/practice/router-terminal/figure-05.webp)
-
-![라우터 연결 및 터미널 실습 화면 06](/assets/images/network/practice/router-terminal/figure-06.webp)
-
-![라우터 연결 및 터미널 실습 화면 07](/assets/images/network/practice/router-terminal/figure-07.webp)
-
-![라우터 연결 및 터미널 실습 화면 08](/assets/images/network/practice/router-terminal/figure-08.webp)
-
-![라우터 연결 및 터미널 실습 화면 09](/assets/images/network/practice/router-terminal/figure-09.webp)
-
-![라우터 연결 및 터미널 실습 화면 10](/assets/images/network/practice/router-terminal/figure-10.webp)
-
-![라우터 연결 및 터미널 실습 화면 11](/assets/images/network/practice/router-terminal/figure-11.webp)
-
-![라우터 연결 및 터미널 실습 화면 12](/assets/images/network/practice/router-terminal/figure-12.webp)
-
-![라우터 연결 및 터미널 실습 화면 13](/assets/images/network/practice/router-terminal/figure-13.webp)
-
-![라우터 연결 및 터미널 실습 화면 14](/assets/images/network/practice/router-terminal/figure-14.webp)
-
-![라우터 연결 및 터미널 실습 화면 15](/assets/images/network/practice/router-terminal/figure-15.webp)
-
-![라우터 연결 및 터미널 실습 화면 16](/assets/images/network/practice/router-terminal/figure-16.webp)
-
-![라우터 연결 및 터미널 실습 화면 17](/assets/images/network/practice/router-terminal/figure-17.webp)
-
-![라우터 연결 및 터미널 실습 화면 18](/assets/images/network/practice/router-terminal/figure-18.webp)
-
-![라우터 연결 및 터미널 실습 화면 19](/assets/images/network/practice/router-terminal/figure-19.webp)
-
-![라우터 연결 및 터미널 실습 화면 20](/assets/images/network/practice/router-terminal/figure-20.webp)
-
-![라우터 연결 및 터미널 실습 화면 21](/assets/images/network/practice/router-terminal/figure-21.webp)
-
-![라우터 연결 및 터미널 실습 화면 22](/assets/images/network/practice/router-terminal/figure-22.webp)
-
-![라우터 연결 및 터미널 실습 화면 23](/assets/images/network/practice/router-terminal/figure-23.webp)
+- Router 이름 변경
+    
+    라우터의 이름 변경은 다음과 같이 한다.
+    
+    ![Untitled](/assets/images/network/practice/router-terminal/figure-23.webp)
