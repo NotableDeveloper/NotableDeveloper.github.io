@@ -20,3 +20,5 @@
       children:
         - title: Theory
           url: /categories/network/theory/
+        - title: Practice
+          url: /categories/network/practice/
