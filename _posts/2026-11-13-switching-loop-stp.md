@@ -1,5 +1,6 @@
 ---
 title: "[2계층] Switching Loop와 STP"
+title_order: 20
 description: "Switching Loop와 STP에 관한 네트워크 이론."
 date: 2026-11-13 08:05:59 +0900
 categories: [Network, Theory]

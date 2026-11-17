@@ -1,5 +1,6 @@
 ---
 title: "[기본개념] OSI 7계층에서의 스위치와 라우터"
+title_order: 10
 description: "OSI 7계층에서의 스위치와 라우터에 관한 네트워크 이론."
 date: 2026-11-13 08:05:59 +0900
 categories: [Network, Theory]

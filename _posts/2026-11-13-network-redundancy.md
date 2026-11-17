@@ -1,5 +1,6 @@
 ---
 title: "[기본개념] 이중화"
+title_order: 10
 description: "이중화에 관한 네트워크 이론."
 date: 2026-11-13 08:05:59 +0900
 categories: [Network, Theory]
