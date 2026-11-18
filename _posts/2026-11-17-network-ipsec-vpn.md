@@ -65,7 +65,7 @@ tags: [network, packet-tracer, ipsec, vpn]
     
     노란색 영역(= 원격지)의 호스트에서 주황색 영역에 접근하려고 한다. 
     
-    ![Untitled](/assets/images/network/practice/ipsec-vpn/figure-02.webp)
+    ![Untitled](/assets/images/network/practice/ipsec-vpn/figure-03.webp)
     
     주황색 영역의 라우터에 다음과 같이 설정해준다.
     
@@ -118,4 +118,4 @@ tags: [network, packet-tracer, ipsec, vpn]
     
     이제 노란색 영역의 호스트에 아래와 같은 VPN 설정 정보(= 라우터에서 적용한 정보)를 입력해주면 주황색 영역에서 통신하는 것과 같아진다.
     
-    ![Untitled](/assets/images/network/practice/ipsec-vpn/figure-03.webp)
+    ![Untitled](/assets/images/network/practice/ipsec-vpn/figure-02.webp)

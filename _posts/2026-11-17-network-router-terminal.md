@@ -8,36 +8,36 @@ tags: [network, packet-tracer, router, cisco]
 
 드래그 앤 드랍으로 아래와 같이 장비와 케이블을 배치하여 실습 환경을 구축해보자. (Rotuer는 2621, Switch는 2960 사용한다.)
 
-![Untitled](/assets/images/network/practice/router-terminal/figure-01.webp)
+![Untitled](/assets/images/network/practice/router-terminal/original-01.png)
 
 - 2621 Router 장비 구조
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-02.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-02.png)
     
     - 콘솔 포트
         
         초당 9600bps의 데이터를 처리함 (매우 느린 편, 명령어 입력 시에만 사용)
         
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-03.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-03.png)
     
     - 전원
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-04.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-04.png)
     
     - Fast Ethernet
         
         초당 100mbps의 데이터를 처리함
         
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-05.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-05.png)
     
     - Network module
         
         이번 실습에서는 NM-2FE2W 모듈을 사용한다.
         
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-06.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-06.png)
     
     - Web Interface Card
     
@@ -46,21 +46,21 @@ tags: [network, packet-tracer, router, cisco]
     
     아래의 케이블은 **서로 다른 장치를 연결**할 때 사용하는 구리 케이블이다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-07.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-07.png)
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-08.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-08.png)
     
     아래 케이블은 같은 장치를 연결할 때(= Router 간의 연결, Switch 간의 연결) 사용하는 구리 케이블이다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-09.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-09.png)
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-10.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-10.png)
     
     기기의 콘솔 연결 아래의 케이블로 한다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-11.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-11.png)
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-12.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-12.png)
     
 
 - Router의 Link pulse 켜기
@@ -73,30 +73,30 @@ tags: [network, packet-tracer, router, cisco]
     
     아래와 같이 4/0, 2/0, 3/0 포트에 Link pulse가 Off 되어 있는 것을 On으로 바꾸어보자.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-13.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-13.png)
     
     먼저 Console과 연결하고 아래와 같이 인터페이스 컨피규레이션 모드로 진입한다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-14.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-14.png)
     
     이후, no shutdown 명령을 입력해준다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-15.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-15.png)
     
     그 결과로 4/0 포트에 초록 불이 들어온 것을 확인할 수 있다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-16.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-16.png)
     
     또, 아래와 같이 라우터 간의 연결 후에 On을 시키려면 각각의 라우터 방향에서 no shutdown을 실행해야 한다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-17.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-17.png)
     
 
 - 터미널 접근
     
     콘솔에서 명령을 입력하기 위해서는 Laptop을 좌클릭하고, 아래와 같이 Terminal을 클릭하면 된다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-18.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-18.png)
     
     라우터에 접근하는 방식은 크게 두 가지가 존재한다.
     
@@ -117,13 +117,13 @@ tags: [network, packet-tracer, router, cisco]
             
             다음과 같이 설정한다.
             
-            ![Untitled](/assets/images/network/practice/router-terminal/figure-19.webp)
+            ![Untitled](/assets/images/network/practice/router-terminal/original-19.png)
             
             이 때, vty는 가상의 인터페이스를 생성하는 것이고 0 4 라는 옵션은 0번부터 4번까지 총 5명의 유저를 허용하겠다는 의미이다.
             
             이후, 비밀번호를 설정한 네트워크 접근 시에 비밀번호를 묻게 된다.
             
-            ![Untitled](/assets/images/network/practice/router-terminal/figure-20.webp)
+            ![Untitled](/assets/images/network/practice/router-terminal/original-20.png)
             
         
     
@@ -162,15 +162,15 @@ tags: [network, packet-tracer, router, cisco]
     
     기타 상세한 명령어 내용은 다음과 같다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-21.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-21.png)
     
     또, 필요에 따라 Level 15 명령어 모드의 진입에 비밀번호를 걸어야 할 수도 있다. 이는 다음과 같이 진행한다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-22.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-22.png)
     
 
 - Router 이름 변경
     
     라우터의 이름 변경은 다음과 같이 한다.
     
-    ![Untitled](/assets/images/network/practice/router-terminal/figure-23.webp)
+    ![Untitled](/assets/images/network/practice/router-terminal/original-23.png)
