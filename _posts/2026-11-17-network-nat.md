@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, nat, ospf]
 ---
 
+> **실습 목표** · 라우터의 내부·외부 인터페이스에 NAT를 설정하고, 변환 테이블에서 내부 사설 IP 주소가 어떤 공인 주소에 대응하는지 확인한다.
+
 아래 네트워크 환경은 사설 IP 영역과 공인 IP 영역으로 나누어진다. 사설 IP 영역은 라우팅 프로토콜로 OSPF가 사용되고 있으며, 노란색 라우터는 NAT 서비스가 동작하여 사설 IP 주소와 공인 IP 주소 간의 변환을 담당할 것이다. 
 
 ![Untitled](/assets/images/network/practice/nat/figure-01.webp)

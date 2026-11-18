@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, ip, routing]
 ---
 
+> **실습 목표** · 장비에 IP 주소를 할당한 뒤, EIGRP 설정 전후의 라우팅 테이블을 비교해 원격 서브넷 경로가 추가되는 과정을 확인한다. 스위치에서는 MAC 주소가 어느 포트에 연결되는지 조회한다.
+
 아래와 같이 다섯 개로 나눌 수 있는 네트워크를 구성해보자.
 
 ![Untitled](/assets/images/network/practice/ip-routing-table/figure-07.webp)

@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, dhcp, dns]
 ---
 
+> **실습 목표** · 단말이 DHCP로 IP 설정을 받고 DNS로 이름에 해당하는 IP 주소를 찾는 과정을 익힌다. DHCP 서버와 단말이 서로 다른 서브넷에 있을 때 게이트웨이가 요청을 전달하도록 설정한다.
+
 이번 실습은 아래와 같은 환경을 구축하여 시작한다.
 
 ![Untitled](/assets/images/network/practice/dhcp-dns/figure-08.webp)

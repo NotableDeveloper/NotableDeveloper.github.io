@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, hsrp, fhrp]
 ---
 
+> **실습 목표** · 단말이 가상 IP 주소를 기본 게이트웨이로 사용하도록 HSRP를 구성한다. VLAN별로 우선순위를 다르게 설정해 두 라우터가 액티브 역할을 나누도록 한다.
+
 아래와 같은 네트워크 구성에서 파란색 라우터과 빨간색 라우터를 각각 VLAN 10과 VLAN 20에 대한 **액티브 라우터**로 설정해보자.
 
 ![Untitled](/assets/images/network/practice/hsrp/figure-01.webp)

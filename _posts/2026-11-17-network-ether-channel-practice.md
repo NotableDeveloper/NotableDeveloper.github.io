@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, etherchannel]
 ---
 
+> **실습 목표** · 두 스위치 사이의 물리 포트들을 같은 채널 그룹에 넣어 여러 회선을 하나의 논리 링크로 구성한다.
+
 아래의 두 스위치의 링크를 이중으로 연결하고, 이더 채널을 설정해보자.
 
 ![Untitled](/assets/images/network/practice/ether-channel-practice/figure-01.webp)

@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, static-route]
 ---
 
+> **실습 목표** · 직접 연결되지 않은 목적지 네트워크에 패킷을 전달할 수 있도록 정적 경로를 추가한다. 토폴로지에서 다음 홉 라우터를 찾아 목적지 대역과 함께 지정하는 법을 익힌다.
+
 아래와 같은 네트워크에서 라우팅 프로토콜을 사용하지 않고 Static route만을 설정하여 라우팅 테이블을 채워보자.
 
 ![Untitled](/assets/images/network/practice/static-route-practice/figure-01.webp)

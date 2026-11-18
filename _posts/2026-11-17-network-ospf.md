@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, ospf, routing]
 ---
 
+> **실습 목표** · OSPF 설정에서 각 네트워크가 속할 영역(area)을 지정한다. 같은 토폴로지를 여러 영역으로 나눈 구성과 단일 영역에 둔 구성을 비교한다.
+
 OSPF는 알고리즘 특성상 CPU 소모량이 많으므로 아래 그림처럼 영역을 나누어 영역별로 OSPF를 동작시키는 것이 좋다.
 
 ![Untitled](/assets/images/network/practice/ospf/figure-01.webp)

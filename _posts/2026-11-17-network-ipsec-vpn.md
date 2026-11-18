@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, ipsec, vpn]
 ---
 
+> **실습 목표** · 두 지점의 네트워크를 연결하는 VPN과 개별 단말이 원격 접속하는 VPN을 구성한다. 두 방식에서 터널의 양 끝을 어느 장비가 맡는지 구분한다.
+
 - Site to Site VPN
     
     서울 라우터와 북경 라우터 간에 VPN을 적용하려고 한다.

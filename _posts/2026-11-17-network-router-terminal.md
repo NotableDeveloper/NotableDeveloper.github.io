@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, router, cisco]
 ---
 
+> **실습 목표** · Packet Tracer에서 장비를 연결하고 PC의 콘솔 터미널로 라우터에 접속한다. 프롬프트의 변화를 보며 사용자 모드에서 특권 모드와 설정 모드로 이동하는 법을 익힌다.
+
 드래그 앤 드랍으로 아래와 같이 장비와 케이블을 배치하여 실습 환경을 구축해보자. (Rotuer는 2621, Switch는 2960 사용한다.)
 
 ![Untitled](/assets/images/network/practice/router-terminal/original-01.png)

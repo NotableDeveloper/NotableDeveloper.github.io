@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, bgp, ospf]
 ---
 
+> **실습 목표** · 세 자율 시스템(AS) 사이에 BGP 이웃을 설정한다. AS 222에서 DMZ 대역을 BGP로 알리고 내부망에는 OSPF를 적용해 두 프로토콜이 담당하는 구간을 구분한다.
+
 아래와 같이 세 가지 영역 간에 BGP를 설정해보자.
 
 ![Untitled](/assets/images/network/practice/bgp/figure-01.webp)

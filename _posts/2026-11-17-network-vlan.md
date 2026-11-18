@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, vlan, trunk]
 ---
 
+> **실습 목표** · 스위치 포트를 VLAN별로 나누고 스위치 사이에 트렁크를 구성한다. 여러 VLAN의 트래픽이 하나의 링크를 공유하면서도 논리적으로 분리되는 원리를 익힌다.
+
 스위치에 VLAN을 설정하여 논리적인 두 개의 스위치로 동작하는 환경을 구축해보자.
 
 ![Untitled](/assets/images/network/practice/vlan/figure-01.webp)

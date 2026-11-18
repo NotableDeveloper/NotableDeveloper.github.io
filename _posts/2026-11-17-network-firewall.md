@@ -6,6 +6,8 @@ categories: [Network, Practice]
 tags: [network, packet-tracer, firewall, acl, cbac]
 ---
 
+> **실습 목표** · 웹 서버 접근 정책을 ACL로 표현하고, CBAC가 연결 상태를 추적해 응답 트래픽을 허용하는 원리를 익힌다.
+
 아래와 같은 네트워크 구조에서 보라색 컴퓨터만 웹 서버(www.aaa.com)에 접근할 수 있도록 주황색 라우터에 Access list 및 CBAC 필터를 적용해보자.
 
 ![Untitled](/assets/images/network/practice/firewall/figure-01.webp)
