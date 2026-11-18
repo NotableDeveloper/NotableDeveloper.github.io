@@ -23,7 +23,7 @@ in fa 0/0
 ip access-group  100 in
 ```
 
-**CBAC(Context-Based Access Control)**는 라우터를 통과하는 연결의 상태를 추적하는 Cisco IOS 방화벽 기능이다. 위 ACL은 보라색 PC가 웹 서버의 TCP 80번 포트로 요청을 보낼 수 있도록 허용한다. CBAC는 허용된 HTTP 연결을 검사하고, 서버에서 돌아오는 패킷이 그 연결에 속하면 통과할 수 있도록 임시 허용 규칙을 만든다. 연결이 종료되거나 제한 시간이 지나면 이 규칙도 사라진다. [Cisco CBAC 구성 가이드](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_data_cbac_fw/configuration/15-mt/sec-data-cbac-fw-15-mt-book/config-cbac-fw.html)
+**CBAC(Context-Based Access Control)**는 라우터를 통과하는 연결의 상태를 추적하는 Cisco IOS 방화벽 기능이다. 위 ACL은 보라색 PC가 웹 서버의 TCP 80번 포트로 요청을 보낼 수 있도록 허용한다. CBAC는 허용된 HTTP 연결을 검사하고, 서버에서 돌아오는 패킷이 그 연결에 속하면 통과할 수 있도록 임시 허용 규칙을 만든다. 연결이 종료되거나 제한 시간이 지나면 이 규칙도 사라진다.
 
 아래 명령은 HTTP 검사 규칙에 `123`이라는 이름을 붙이고, FastEthernet 1/0으로 들어오는 트래픽에 적용한다.
 
